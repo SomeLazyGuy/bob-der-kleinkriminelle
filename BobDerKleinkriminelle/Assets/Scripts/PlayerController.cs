@@ -1,33 +1,63 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour {
-    [SerializeField] private InputAction playerControls;
     [SerializeField] private float moveSpeed = 5f;
 
-    private Rigidbody2D rigidbody2D;
-    private Vector2 moveDirection = Vector2.zero;
+    private GameController _gameManager;
+    private Rigidbody2D _rigidbody2D;
+    private PlayerControls _controls;
+    private Vector2 _moveDirection = Vector2.zero;
+    private List<ItemEntity> _itemsInRange = new List<ItemEntity>();
+
+    private bool _canPickupItem = true;
+
+    private void Awake() {
+        _controls = new PlayerControls();
+        _gameManager = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+        _rigidbody2D = GetComponent<Rigidbody2D>();
+    }
     
     private void OnEnable() {
-        playerControls.Enable();
+        _controls.Enable();
     }
 
     private void OnDisable() {
-        playerControls.Disable();
-    }
-
-    private void Start() {
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        _controls.Disable();
     }
 
     private void Update() {
-        moveDirection = playerControls.ReadValue<Vector2>();
+        _moveDirection = _controls.Player.Move.ReadValue<Vector2>();
+        
+        if ((int)_controls.Player.Interact.ReadValue<float>() == 1) {
+            if (!_canPickupItem) return;
+            if (_itemsInRange.Count == 0) return;
+            
+            if (_gameManager.AddItem(_itemsInRange[0])) _canPickupItem = false;
+        } else {
+            _canPickupItem = true;
+        }
     }
 
     private void FixedUpdate() {
-        rigidbody2D.velocity = moveDirection * moveSpeed;
+        _rigidbody2D.velocity = _moveDirection * moveSpeed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Items")) {
+            _itemsInRange.Add(other.gameObject.GetComponent<ItemEntity>());
+            
+            if (_itemsInRange.Count == 1) _itemsInRange[0].SelectItem();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Items")) {
+            ItemEntity item = other.gameObject.GetComponent<ItemEntity>();
+            item.DeselectItem();
+            _itemsInRange.Remove(item);
+            
+            if (_itemsInRange.Count > 0) _itemsInRange[0].SelectItem();
+        }
     }
 }

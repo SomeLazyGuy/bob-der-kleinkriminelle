@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ItemEntity : MonoBehaviour {
     [SerializeField] private ItemData itemData;
-    [SerializeField] private GameObject selectIndicator;
+    
+    private GameObject selectIndicator;
     
     private void Awake() {
+        selectIndicator = transform.Find("Highlight").gameObject;
         selectIndicator.SetActive(false);
     }
 

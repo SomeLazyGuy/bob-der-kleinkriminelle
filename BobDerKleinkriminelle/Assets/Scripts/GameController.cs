@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour {
     
     public bool AddItem(ItemEntity itemEntity) {
         if (_currentWeight + itemEntity.GetWeight() > maxWeight) {
-            StartCoroutine(ShowTooHeavyText());
+            if (!tooHeavyText.IsActive()) StartCoroutine(ShowTooHeavyText());
             return false;
         }
         

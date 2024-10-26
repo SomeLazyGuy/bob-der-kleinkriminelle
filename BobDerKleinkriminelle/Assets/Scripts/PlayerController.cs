@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour {
             if (!_canPickupItem) return;
             if (_itemsInRange.Count == 0) return;
             
-            if (_gameManager.AddItem(_itemsInRange[0])) _canPickupItem = false;
+            if (_gameManager.PickupItem(_itemsInRange[0])) _canPickupItem = false;
         } else {
             _canPickupItem = true;
         }

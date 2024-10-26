@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemEntity : MonoBehaviour {
-    [SerializeField] private ItemData itemData;
-    
+    public ItemData itemData;
     private GameObject selectIndicator;
     
     private void Awake() {
@@ -12,13 +11,11 @@ public class ItemEntity : MonoBehaviour {
         selectIndicator.SetActive(false);
     }
 
-    public float GetWeight() {
-        return itemData.weight;
-    }
+    public Sprite GetSprite() => transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
 
-    public float GetValue() {
-        return itemData.value;
-    }
+    public float GetWeight() => itemData.weight;
+
+    public float GetValue() => itemData.value;
     
     public void SelectItem() {
         selectIndicator.SetActive(true);

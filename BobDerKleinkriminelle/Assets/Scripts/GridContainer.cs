@@ -7,8 +7,6 @@ using UnityEngine.UI;
 public class GridContainer : MonoBehaviour {
     [SerializeField] private int rows;
     [SerializeField] private int columns;
-    [SerializeField] private float spacingPercent;
-    [SerializeField] private bool usePadding;
 
     private GridLayoutGroup gridLayoutGroup;
 
@@ -26,11 +24,9 @@ public class GridContainer : MonoBehaviour {
         if (gridLayoutGroup == null) return;
         
         Vector2 gridContainerSize = gameObject.GetComponent<RectTransform>().rect.size;
-        float spacingSize = gridContainerSize.x * spacingPercent;
-        Vector2 spacing = new Vector2(spacingSize * (columns - 1), spacingSize * (rows - 1));
-
-        gridLayoutGroup.cellSize = (gridContainerSize - spacing) / new Vector2(columns, rows);
-        gridLayoutGroup.spacing = new Vector2(spacingSize, spacingSize);
-        if (usePadding) gridLayoutGroup.padding = new RectOffset((int)spacingSize, (int)spacingSize, (int)spacingSize, (int)spacingSize);
+        Vector2 spacingSize = new Vector2(gridLayoutGroup.spacing.x * (columns - 1), gridLayoutGroup.spacing.y * (rows - 1));
+        Vector2 paddingSize = new Vector2(gridLayoutGroup.padding.left + gridLayoutGroup.padding.right, gridLayoutGroup.padding.top + gridLayoutGroup.padding.bottom);
+        
+        gridLayoutGroup.cellSize = (gridContainerSize - spacingSize - paddingSize) / new Vector2(columns, rows);
     }
 }

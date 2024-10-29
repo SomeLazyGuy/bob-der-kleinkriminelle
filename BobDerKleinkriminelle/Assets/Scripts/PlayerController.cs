@@ -27,7 +27,11 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Update() {
-        _moveDirection = _controls.Player.Move.ReadValue<Vector2>();
+        // Zur Behebung der NullReferenceException
+        if(_controls.Player.Move.ReadValue<Vector2>() != null){
+            _moveDirection = _controls.Player.Move.ReadValue<Vector2>();
+        }
+        
         
         if ((int)_controls.Player.Interact.ReadValue<float>() == 1) {
             if (!_canPickupItem) return;

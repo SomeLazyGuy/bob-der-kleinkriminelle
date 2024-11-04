@@ -46,7 +46,7 @@ public class LevelManager : MonoBehaviour {
     }
 
     public void SwitchScene(string nextScene) {
-        if (_direction != 0 || nextScene.Length == 0) return;
+        if (nextScene.Length == 0) return;
 
         _nextScene = nextScene;
         _direction = -1;
@@ -67,6 +67,8 @@ public class LevelManager : MonoBehaviour {
         SceneManager.LoadScene(_nextScene);
         
         yield return new WaitForSeconds(waitTime);
+
+        GameObject.FindWithTag("Player").GetComponent<PlayerController>().StartLevelTransition(Vector2.up);
         
         _nextScene = "";
         _alpha = 1f;

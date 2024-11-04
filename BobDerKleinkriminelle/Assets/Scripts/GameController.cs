@@ -11,11 +11,13 @@ public class GameController : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI tooHeavyText;
     [SerializeField] private TextMeshProUGUI inventoryFullText;
     [SerializeField] private float maxWeight;
-    
+
+    private PlayerController player;
     private float _currentWeight = 0;
     private float _currentValue = 0;
 
     private void Start() {
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         maxWeightText.text = "Max weight: " + maxWeight;
         inventoryManager.Initialize();
         inventoryManager.gameObject.SetActive(false);
@@ -23,7 +25,10 @@ public class GameController : MonoBehaviour {
     
     private void Update() {
         // toggle inventory
-        if (Input.GetKeyDown(KeyCode.Q)) inventoryManager.gameObject.SetActive(!inventoryManager.gameObject.activeSelf);
+        if (Input.GetKeyDown(KeyCode.Q)) {
+            inventoryManager.gameObject.SetActive(!inventoryManager.gameObject.activeSelf);
+            player.canMove = !inventoryManager.gameObject.activeSelf;
+        }
     }
     
     public bool PickupItem(ItemEntity itemEntity) {

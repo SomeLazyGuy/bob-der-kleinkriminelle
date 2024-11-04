@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     [SerializeField] private float moveSpeed = 5f;
+    [HideInInspector] public bool canMove = false;
 
     private GameController _gameManager;
     private Rigidbody2D _rigidbody2D;
@@ -11,11 +12,14 @@ public class PlayerController : MonoBehaviour {
     private List<ItemEntity> _itemsInRange = new List<ItemEntity>();
 
     private bool _canPickupItem = true;
+    private bool _isInLevelTransition = false;
+    private Vector2 _transitionDirection = Vector2.zero;
 
     private void Awake() {
         _controls = new PlayerControls();
         _gameManager = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        transform.position = new Vector3(0, -13, 0);
     }
     
     private void OnEnable() {
@@ -27,11 +31,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Update() {
-        // Zur Behebung der NullReferenceException
-        if(_controls.Player.Move.ReadValue<Vector2>() != null){
-            _moveDirection = _controls.Player.Move.ReadValue<Vector2>();
-        }
-        
+        _moveDirection = _controls.Player.Move.ReadValue<Vector2>();
         
         if ((int)_controls.Player.Interact.ReadValue<float>() == 1) {
             if (!_canPickupItem) return;
@@ -44,6 +44,16 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+        if (_isInLevelTransition) {
+            _rigidbody2D.velocity = _transitionDirection * moveSpeed;
+
+            if (transform.position.y is > -7 and < 0) {
+                _isInLevelTransition = false;
+                canMove = true;
+            }
+        }
+        
+        if (!canMove) return;
         _rigidbody2D.velocity = _moveDirection * moveSpeed;
     }
 
@@ -63,5 +73,11 @@ public class PlayerController : MonoBehaviour {
             
             if (_itemsInRange.Count > 0) _itemsInRange[0].SelectItem();
         }
+    }
+
+    public void StartLevelTransition(Vector2 direction) {
+        _transitionDirection = direction;
+        canMove = false;
+        _isInLevelTransition = true;
     }
 }

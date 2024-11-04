@@ -30,6 +30,7 @@ public class ItemEntity : MonoBehaviour {
 
     public void DeselectItem() {
         selectIndicator.SetActive(false);
+        displayItemInfo.hideText();
     }
 
     public void PickupItem() {

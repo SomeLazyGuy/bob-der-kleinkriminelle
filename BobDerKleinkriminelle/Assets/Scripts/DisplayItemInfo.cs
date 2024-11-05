@@ -8,8 +8,10 @@ using System;
 public class DisplayItemInfo : MonoBehaviour
 {
     public ItemData itemData;
+    public Vector3 itemPosition;
     [SerializeField] private float heightOffset = 1.0f;
     private TextMeshProUGUI textMeshProComponent;
+
 
     void Start(){
         Debug.Log($"[Start]: Initializing DisplayItemInfo for {gameObject.name}");
@@ -58,36 +60,34 @@ public class DisplayItemInfo : MonoBehaviour
 
         // Log the world position of the object
         Vector3 objectWorldPosition = transform.position;
-        //Debug.Log($"[Update][textMeshProComponent]: My object is {transform.name}, located at {objectWorldPosition}");       // DEBUGGING
-        Debug.Log($"[Update][textMeshProComponent]: My object is {gameObject.name}, located at {objectWorldPosition}; real object is {itemData.itemName}");       // DEBUGGING 
-
-        // Apply the height offset and set the position of the text component
-        //float autoHeightOffset = 2.5f;
+        Debug.Log($"[UpdateText] My object is {gameObject.name}, located at {objectWorldPosition}; real object is {itemData.itemName}");
+        Debug.Log($"[UpdateText] Position {itemPosition} derived for {itemData.itemName}");
         const float smallItemHeightOffset = 1.6f;
-        const float bigItemHeightOffset = 3.0f;
+        const float bigItemHeightOffset = 4.5f;
 
+        //TODO: Find a solution with gameObject.name or custom prefab values
         Dictionary<string,float> itemHeightOffsets = new Dictionary<string, float>(){
             {"Moneybag", smallItemHeightOffset},
             {"Cup", smallItemHeightOffset},
             {"Cashregister", smallItemHeightOffset},
             {"Vault", bigItemHeightOffset},
             {"Painting", bigItemHeightOffset}
-        };
+        };        
 
         float autoHeightOffset = itemHeightOffsets.TryGetValue(
             gameObject.name, out float heightOffset) ? heightOffset : 2.5f;
         Debug.Log($"[Update][textMeshProComponent]: Height offset of {autoHeightOffset} for {gameObject.name}");
 
-        Vector3 textPosition = objectWorldPosition + new Vector3(0, autoHeightOffset, 0);  // TODO
+        Vector3 textPosition = itemPosition + new Vector3(0, autoHeightOffset, 0);
         textMeshProComponent.transform.position = textPosition;
         Debug.Log($"[Update][textMeshProComponent]: Text position is {textMeshProComponent.transform.position}");
 
 
         Debug.Log($"[UpdateText]: Successfully fetched itemData for {gameObject.name} ({itemData.weight}kg, {itemData.value}€)");
-        textMeshProComponent.text = $"Weight: {itemData.weight}\nValue: {itemData.value}";
+        textMeshProComponent.text = $"<sprite=10> Weight: {itemData.weight}kg\n<sprite=11> Value: {itemData.value}€";
     }
 
-    public void hideText(){
+    public void HideText(){
         if (itemData == null){
             Debug.LogError($"[hideText]: itemData is null for {gameObject.name}");
             textMeshProComponent.text = "Error :(";
@@ -96,7 +96,7 @@ public class DisplayItemInfo : MonoBehaviour
 
         if (textMeshProComponent == null)
         {
-            Debug.LogError($"[UpdateText]: textMeshProComponent is null for {gameObject.name}");
+            Debug.LogError($"[HideText]: textMeshProComponent is null for {gameObject.name}");
             return;
         }
 

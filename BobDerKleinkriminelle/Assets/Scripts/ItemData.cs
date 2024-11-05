@@ -7,4 +7,5 @@ public class ItemData : ScriptableObject {
     public string itemName;
     public float value;
     public float weight;
+    //public Vector3 itemPosition;
 }

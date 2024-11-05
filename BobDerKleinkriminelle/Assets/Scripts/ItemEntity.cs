@@ -6,6 +6,7 @@ public class ItemEntity : MonoBehaviour {
     public ItemData itemData;
     private GameObject selectIndicator;
     private DisplayItemInfo displayItemInfo;
+    public Vector3 itemPosition;
 
     private void Awake() {
         selectIndicator = transform.Find("Highlight").gameObject;
@@ -24,16 +25,22 @@ public class ItemEntity : MonoBehaviour {
         if (displayItemInfo != null)
         {
             displayItemInfo.itemData = itemData;
+            displayItemInfo.itemPosition = transform.position;
+            Debug.Log($"[SelectItem]: Logging pos: {transform.position} for  + gameObject.name");
             displayItemInfo.UpdateText();
         }
     }
 
     public void DeselectItem() {
         selectIndicator.SetActive(false);
-        displayItemInfo.hideText();
+        if(displayItemInfo != null){
+            displayItemInfo.HideText();
+        }
     }
 
     public void PickupItem() {
         gameObject.SetActive(false);
     }
+
+    public ItemData GetItemData() => itemData;
 }

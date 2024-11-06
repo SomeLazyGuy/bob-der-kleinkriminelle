@@ -180,7 +180,6 @@ GameObject:
   - component: {fileID: 6178771012713501434}
   - component: {fileID: 1189346910582264721}
   - component: {fileID: 1863609055323884620}
-  - component: {fileID: 4876375176208816973}
   m_Layer: 7
   m_Name: Coins
   m_TagString: Untagged
@@ -309,18 +308,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 4a8b3ad637b4b4d92a0502324330968a, type: 2}
   itemPosition: {x: 0, y: 0, z: 0}
---- !u!114 &4876375176208816973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5278162523450197032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9aa192730f9cf141854d0d2b91b1612, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: 0cf4a10d72320b7408b838d15cdedc25, type: 2}
-  itemPosition: {x: 0, y: 0, z: 0}
-  heightOffset: 50

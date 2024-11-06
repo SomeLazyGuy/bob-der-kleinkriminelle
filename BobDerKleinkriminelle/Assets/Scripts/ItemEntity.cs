@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class ItemEntity : MonoBehaviour {
     private void Awake() {
         selectIndicator = transform.Find("Highlight").gameObject;
         selectIndicator.SetActive(false);
-        displayItemInfo = FindObjectOfType<DisplayItemInfo>();
+        displayItemInfo = GameObject.FindWithTag("DisplayItemInfoTag").GetComponent<DisplayItemInfo>();
     }
 
     public Sprite GetSprite() => transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
@@ -24,10 +25,8 @@ public class ItemEntity : MonoBehaviour {
         selectIndicator.SetActive(true);
         if (displayItemInfo != null)
         {
-            displayItemInfo.itemData = itemData;
-            displayItemInfo.itemPosition = transform.position;
-            Debug.Log($"[SelectItem]: Logging pos: {transform.position} for  + gameObject.name");
-            displayItemInfo.UpdateText();
+            Debug.Log($"[SelectItem]: Logging pos: {transform.position} for  + {gameObject.name}");
+            displayItemInfo.UpdateText(itemData, transform.position);
         }
     }
 

@@ -7,26 +7,18 @@ using System;
 
 public class DisplayItemInfo : MonoBehaviour
 {
-    public ItemData itemData;
-    public Vector3 itemPosition;
-    [SerializeField] private float heightOffset = 1.0f;
     private TextMeshProUGUI textMeshProComponent;
-
-
+    
     void Start(){
+        DontDestroyOnLoad(gameObject);
+        
         Debug.Log($"[Start]: Initializing DisplayItemInfo for {gameObject.name}");
-
-        if (itemData == null)
-        {
-            Debug.LogError($"[Start]: itemData is not assigned for {gameObject.name}");
-            return;
-        }
 
         // Create a Canvas
         GameObject canvasObject = new GameObject("ItemInfoCanvas");
         canvasObject.transform.SetParent(transform);
         Canvas canvas = canvasObject.AddComponent<Canvas>();
-        canvas.renderMode = RenderMode.WorldSpace;
+        canvas.renderMode = RenderMode.ScreenSpaceCamera;
         canvasObject.AddComponent<CanvasScaler>();
         canvasObject.AddComponent<GraphicRaycaster>();
 
@@ -36,7 +28,7 @@ public class DisplayItemInfo : MonoBehaviour
         textMeshProComponent = textObject.AddComponent<TextMeshProUGUI>();
 
         // Set text properties
-        textMeshProComponent.fontSize = 0.5f;
+        textMeshProComponent.fontSize = 10f;
         textMeshProComponent.alignment = TextAlignmentOptions.Center;
         RectTransform rectTransform = textMeshProComponent.GetComponent<RectTransform>();
         rectTransform.sizeDelta = new Vector2(100, 50);
@@ -45,27 +37,21 @@ public class DisplayItemInfo : MonoBehaviour
         //UpdateText();
     }
 
-    public void UpdateText(){
-        if (itemData == null){
-            Debug.LogError($"[UpdateText]: itemData is null for {gameObject.name}");
-            textMeshProComponent.text = "Error :(";
-            return;
-        }
-
+    public void UpdateText(ItemData itemData, Vector3 itemPosition) {
         if (textMeshProComponent == null){
             Debug.LogError($"[UpdateText]: textMeshProComponent is null for {gameObject.name}");
-            //textMeshProComponent.text = "";   // DEBUGGING
-            return; // DEBUGGING
+            return;
         }
-
+        
+        textMeshProComponent.gameObject.SetActive(true);
+        
         // Log the world position of the object
-        Vector3 objectWorldPosition = transform.position;
-        Debug.Log($"[UpdateText] My object is {gameObject.name}, located at {objectWorldPosition}; real object is {itemData.itemName}");
+        Vector3 objectWorldPosition = Camera.main.WorldToScreenPoint(transform.position);
+        //Debug.Log($"[UpdateText] My object is {gameObject.name}, located at {objectWorldPosition}; real object is {itemData.itemName}");
         Debug.Log($"[UpdateText] Position {itemPosition} derived for {itemData.itemName}");
         const float smallItemHeightOffset = 1.6f;
         const float bigItemHeightOffset = 4.5f;
 
-        //TODO: Find a solution with gameObject.name or custom prefab values
         Dictionary<string,float> itemHeightOffsets = new Dictionary<string, float>(){
             {"Moneybag", smallItemHeightOffset},
             {"Cup", smallItemHeightOffset},
@@ -79,29 +65,14 @@ public class DisplayItemInfo : MonoBehaviour
         Debug.Log($"[Update][textMeshProComponent]: Height offset of {autoHeightOffset} for {gameObject.name}");
 
         Vector3 textPosition = itemPosition + new Vector3(0, autoHeightOffset, 0);
-        textMeshProComponent.transform.position = textPosition;
+        textMeshProComponent.transform.position = Camera.main.WorldToScreenPoint(textPosition);
         Debug.Log($"[Update][textMeshProComponent]: Text position is {textMeshProComponent.transform.position}");
 
-
-        Debug.Log($"[UpdateText]: Successfully fetched itemData for {gameObject.name} ({itemData.weight}kg, {itemData.value}€)");
         textMeshProComponent.text = $"<sprite=10> Weight: {itemData.weight}kg\n<sprite=11> Value: {itemData.value}€";
     }
 
     public void HideText(){
-        if (itemData == null){
-            Debug.LogError($"[hideText]: itemData is null for {gameObject.name}");
-            textMeshProComponent.text = "Error :(";
-            return;
-        }
-
-        if (textMeshProComponent == null)
-        {
-            Debug.LogError($"[HideText]: textMeshProComponent is null for {gameObject.name}");
-            return;
-        }
-
-        Debug.Log($"[hideText]: Hiding text for {gameObject.name}");
-        textMeshProComponent.text = "";
+        textMeshProComponent.gameObject.SetActive(false);
     }
 
     /*

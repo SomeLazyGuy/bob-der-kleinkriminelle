@@ -180,7 +180,6 @@ GameObject:
   - component: {fileID: 6178771012713501434}
   - component: {fileID: 1189346910582264721}
   - component: {fileID: 1863609055323884620}
-  - component: {fileID: 2968478278295179321}
   m_Layer: 7
   m_Name: Painting
   m_TagString: Untagged
@@ -309,18 +308,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 969d13955563cd9418c44822ae9c52e8, type: 2}
   itemPosition: {x: 0, y: 0, z: 0}
---- !u!114 &2968478278295179321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5278162523450197032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9aa192730f9cf141854d0d2b91b1612, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: 969d13955563cd9418c44822ae9c52e8, type: 2}
-  itemPosition: {x: 0, y: 0, z: 0}
-  heightOffset: 50

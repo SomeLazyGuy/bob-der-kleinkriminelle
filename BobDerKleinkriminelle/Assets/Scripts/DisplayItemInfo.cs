@@ -68,46 +68,10 @@ public class DisplayItemInfo : MonoBehaviour
         textMeshProComponent.transform.position = Camera.main.WorldToScreenPoint(textPosition);
         Debug.Log($"[Update][textMeshProComponent]: Text position is {textMeshProComponent.transform.position}");
 
-        textMeshProComponent.text = $" <sprite name=\"MergedWeight\"> {itemData.weight}kg\n<sprite name=\"MergedDollar\">{itemData.value}";
+        textMeshProComponent.text = $" <sprite name=\"MergedWeight\"> {itemData.weight}\n<sprite name=\"MergedDollar\">{itemData.value}";
     }
 
     public void HideText(){
         textMeshProComponent.gameObject.SetActive(false);
     }
-
-    /*
-    void Update(){
-        if (textMeshProComponent != null)
-        {
-            // Log the world position of the object
-            Vector3 objectWorldPosition = transform.position;
-            Debug.Log($"[Update][textMeshProComponent]: My object is {transform.name}, located at {objectWorldPosition}");
-
-            // Apply the height offset and set the position of the text component
-            //float autoHeightOffset = 2.5f;
-            const float smallItemHeightOffset = 1.6f;
-            const float bigItemHeightOffset = 3.0f;
-
-            Dictionary<string,float> itemHeightOffsets = new Dictionary<string, float>(){
-                {"Moneybag", smallItemHeightOffset},
-                {"Cup", smallItemHeightOffset},
-                {"Cashregister", smallItemHeightOffset},
-                {"Vault", bigItemHeightOffset},
-                {"Painting", bigItemHeightOffset}
-            };
-
-            float autoHeightOffset = itemHeightOffsets.TryGetValue(
-                gameObject.name, out float heightOffset) ? heightOffset : 2.5f;
-            Debug.Log($"[Update][textMeshProComponent]: Height offset of {autoHeightOffset} for {gameObject.name}");
-
-            Vector3 textPosition = objectWorldPosition + new Vector3(0, autoHeightOffset, 0);  // TODO
-            textMeshProComponent.transform.position = textPosition;
-            Debug.Log($"[Update][textMeshProComponent]: Text position is {textMeshProComponent.transform.position}");
-        }
-        else
-        {
-            Debug.LogError($"[Update]: textMeshProComponent is null for {gameObject.name}");
-        }
-    }
-    */
 }

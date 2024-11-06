@@ -73,12 +73,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: cd99b48c75e46c548bcb352c064c426a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc050191aa1b84f78ba8e1950585b832, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.59, y: 2.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -110,8 +110,8 @@ Transform:
   m_GameObject: {fileID: 3975307450774287544}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.45, z: 0}
-  m_LocalScale: {x: 3.5, y: 3.5, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3.2, y: 3.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8718928205169942722}
@@ -237,7 +237,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06, y: -0.45}
+  m_Offset: {x: 0.016756356, y: -0.003150463}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -248,7 +248,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.7, y: 2.7}
+  m_Size: {x: 2.613513, y: 2.69039}
   m_EdgeRadius: 0
 --- !u!61 &1189346910582264721
 BoxCollider2D:
@@ -282,7 +282,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06, y: -0.45}
+  m_Offset: {x: 0.016756356, y: -0.0031502247}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -293,7 +293,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.7, y: 2.7}
+  m_Size: {x: 2.613513, y: 2.6903906}
   m_EdgeRadius: 0
 --- !u!114 &1863609055323884620
 MonoBehaviour:
@@ -308,6 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 0cf4a10d72320b7408b838d15cdedc25, type: 2}
+  itemPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &4876375176208816973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,4 +322,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 0cf4a10d72320b7408b838d15cdedc25, type: 2}
+  itemPosition: {x: 0, y: 0, z: 0}
   heightOffset: 50

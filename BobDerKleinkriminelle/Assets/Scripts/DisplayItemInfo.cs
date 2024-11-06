@@ -68,7 +68,7 @@ public class DisplayItemInfo : MonoBehaviour
         textMeshProComponent.transform.position = Camera.main.WorldToScreenPoint(textPosition);
         Debug.Log($"[Update][textMeshProComponent]: Text position is {textMeshProComponent.transform.position}");
 
-        textMeshProComponent.text = $"<sprite=10> Weight: {itemData.weight}kg\n<sprite=11> Value: {itemData.value}€";
+        textMeshProComponent.text = $"<sprite name=\"MergedDollar\"> Weight: {itemData.weight}kg\n<sprite name=\"MergedWeight\"> Value: {itemData.value}€";
     }
 
     public void HideText(){

@@ -28,7 +28,7 @@ public class DisplayItemInfo : MonoBehaviour
         textMeshProComponent = textObject.AddComponent<TextMeshProUGUI>();
 
         // Set text properties
-        textMeshProComponent.fontSize = 20f;
+        textMeshProComponent.fontSize = 45f;
         textMeshProComponent.alignment = TextAlignmentOptions.Center;
         RectTransform rectTransform = textMeshProComponent.GetComponent<RectTransform>();
         rectTransform.sizeDelta = new Vector2(100, 50);
@@ -65,7 +65,7 @@ public class DisplayItemInfo : MonoBehaviour
         textMeshProComponent.transform.position = Camera.main.WorldToScreenPoint(textPosition);
         Debug.Log($"[Update][textMeshProComponent]: Text position is {textMeshProComponent.transform.position}");
 
-        textMeshProComponent.text = $" <sprite name=\"MergedWeight\"> {itemData.weight}\n<sprite name=\"MergedDollar\">{itemData.value}";
+        textMeshProComponent.text = $"<sprite name=\"WeightHD\"> {itemData.weight}\n<sprite name=\"DollarHD\">{itemData.value}";
     }
 
     public void HideText(){

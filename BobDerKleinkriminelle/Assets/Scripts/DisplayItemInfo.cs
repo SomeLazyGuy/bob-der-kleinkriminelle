@@ -32,9 +32,6 @@ public class DisplayItemInfo : MonoBehaviour
         textMeshProComponent.alignment = TextAlignmentOptions.Center;
         RectTransform rectTransform = textMeshProComponent.GetComponent<RectTransform>();
         rectTransform.sizeDelta = new Vector2(100, 50);
-
-        // Do not call the UpdateText() on startup to avoid text always being visible
-        //UpdateText();
     }
 
     public void UpdateText(ItemData itemData, Vector3 itemPosition) {

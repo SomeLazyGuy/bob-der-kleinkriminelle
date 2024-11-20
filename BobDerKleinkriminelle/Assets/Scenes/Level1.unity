@@ -1886,9 +1886,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryManager: {fileID: 1995545819}
-  weightText: {fileID: 0}
-  valueText: {fileID: 0}
-  maxWeightText: {fileID: 0}
+  weightText: {fileID: 1780997522}
+  valueText: {fileID: 446378841}
+  maxWeightText: {fileID: 1921343433}
   tooHeavyText: {fileID: 511502368}
   inventoryFullText: {fileID: 1544333010}
   maxWeight: 10

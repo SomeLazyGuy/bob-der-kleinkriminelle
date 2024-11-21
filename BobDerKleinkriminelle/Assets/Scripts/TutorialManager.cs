@@ -47,8 +47,7 @@ public class TutorialManager : MonoBehaviour{
                 break;
         }
 
-        //StartCoroutine(AnimateText(tutorialMessage, 0.075f));
-        StartCoroutine(AnimateText(tutorialMessage, 0.0001f));
+        StartCoroutine(AnimateText(tutorialMessage, 0.075f));
     }
 
     private IEnumerator AnimateText(string message, float delay){

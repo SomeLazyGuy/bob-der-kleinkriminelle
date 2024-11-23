@@ -12,11 +12,11 @@ public class ItemSlot : MonoBehaviour {
     
     [HideInInspector] public ItemEntity itemEntity;
     
-    public void SetItem(ItemEntity itemEntity) {
+    public void SetItem(ItemEntity itemEntity, int weight, int value) {
         this.itemEntity = itemEntity;
         itemImage.sprite = itemEntity.GetSprite();
-        weightText.text = itemEntity.itemData.weight.ToString(CultureInfo.CurrentCulture);
-        valueText.text = itemEntity.itemData.value.ToString(CultureInfo.CurrentCulture);
+        weightText.text = weight.ToString(CultureInfo.CurrentCulture);
+        valueText.text = value.ToString(CultureInfo.CurrentCulture);
     }
 
     public void RemoveItem() {

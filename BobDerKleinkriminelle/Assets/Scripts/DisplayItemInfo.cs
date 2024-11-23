@@ -12,7 +12,7 @@ public class DisplayItemInfo : MonoBehaviour
     void Start(){
         DontDestroyOnLoad(gameObject);
         
-        Debug.Log($"[Start]: Initializing DisplayItemInfo for {gameObject.name}");
+        // Debug.Log($"[Start]: Initializing DisplayItemInfo for {gameObject.name}");
 
         // Create a Canvas
         GameObject canvasObject = new GameObject("ItemInfoCanvas");
@@ -34,7 +34,7 @@ public class DisplayItemInfo : MonoBehaviour
         rectTransform.sizeDelta = new Vector2(100, 50);
     }
 
-    public void UpdateText(ItemData itemData, Vector3 itemPosition) {
+    public void UpdateText(int weight, int value, Vector3 itemPosition) {
         if (textMeshProComponent == null){
             Debug.LogError($"[UpdateText]: textMeshProComponent is null for {gameObject.name}");
             return;
@@ -45,7 +45,7 @@ public class DisplayItemInfo : MonoBehaviour
         // Log the world position of the object
         Vector3 objectWorldPosition = Camera.main.WorldToScreenPoint(transform.position);
         //Debug.Log($"[UpdateText] My object is {gameObject.name}, located at {objectWorldPosition}; real object is {itemData.itemName}");
-        Debug.Log($"[UpdateText] Position {itemPosition} derived for {itemData.itemName}");
+        // Debug.Log($"[UpdateText] Position {itemPosition} derived for {itemData.itemName}");
         const float smallItemHeightOffset = 1.6f;
         const float bigItemHeightOffset = 4.5f;
 
@@ -59,13 +59,13 @@ public class DisplayItemInfo : MonoBehaviour
 
         float autoHeightOffset = itemHeightOffsets.TryGetValue(
             gameObject.name, out float heightOffset) ? heightOffset : 2.5f;
-        Debug.Log($"[Update][textMeshProComponent]: Height offset of {autoHeightOffset} for {gameObject.name}");
+        // Debug.Log($"[Update][textMeshProComponent]: Height offset of {autoHeightOffset} for {gameObject.name}");
 
         Vector3 textPosition = itemPosition + new Vector3(0, autoHeightOffset, 0);
         textMeshProComponent.transform.position = Camera.main.WorldToScreenPoint(textPosition);
-        Debug.Log($"[Update][textMeshProComponent]: Text position is {textMeshProComponent.transform.position}");
+        // Debug.Log($"[Update][textMeshProComponent]: Text position is {textMeshProComponent.transform.position}");
 
-        textMeshProComponent.text = $"<sprite name=\"WeightHD\"> {itemData.weight}\n<sprite name=\"DollarHD\">{itemData.value}";
+        textMeshProComponent.text = $"<sprite name=\"WeightHD\"> {weight}\n<sprite name=\"DollarHD\">{value}";
     }
 
     public void HideText(){

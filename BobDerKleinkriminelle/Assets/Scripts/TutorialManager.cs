@@ -17,6 +17,7 @@ public class TutorialManager : MonoBehaviour{
         }else{
             Debug.LogError("TutorialCloseButton is null");
         }
+        tutorialText.fontSize = 9.5f;
         SetTutorialText();
     }
 

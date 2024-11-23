@@ -9,7 +9,13 @@ public class ItemEntity : MonoBehaviour {
     private DisplayItemInfo displayItemInfo;
     public Vector3 itemPosition;
 
+    private int _weight;
+    private int _value;
+    
     private void Awake() {
+        _weight = itemData.weight;
+        _value = itemData.value;
+        
         selectIndicator = transform.Find("Highlight").gameObject;
         selectIndicator.SetActive(false);
         displayItemInfo = GameObject.FindWithTag("DisplayItemInfoTag").GetComponent<DisplayItemInfo>();
@@ -17,16 +23,23 @@ public class ItemEntity : MonoBehaviour {
 
     public Sprite GetSprite() => transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
 
-    public float GetWeight() => itemData.weight;
+    public int GetWeight() => _weight;
 
-    public float GetValue() => itemData.value;
+    public int GetValue() => _value;
+
+    public void SetWeight(int weight) {
+        _weight = weight;
+    }
+
+    public void SetValue(int value) {
+        _value = value;
+    }
     
     public void SelectItem() {
         selectIndicator.SetActive(true);
-        if (displayItemInfo != null)
-        {
-            Debug.Log($"[SelectItem]: Logging pos: {transform.position} for  + {gameObject.name}");
-            displayItemInfo.UpdateText(itemData, transform.position);
+        if (displayItemInfo != null) {
+            // Debug.Log($"[SelectItem]: Logging pos: {transform.position} for  + {gameObject.name}");
+            displayItemInfo.UpdateText(_weight, _value, transform.position);
         }
     }
 
@@ -40,6 +53,4 @@ public class ItemEntity : MonoBehaviour {
     public void PickupItem() {
         gameObject.SetActive(false);
     }
-
-    public ItemData GetItemData() => itemData;
 }

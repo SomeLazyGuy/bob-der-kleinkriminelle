@@ -23,17 +23,17 @@ public class InventoryManager : MonoBehaviour {
         }
     }
 
-    public bool AddItem(ItemEntity itemEntity) {
+    public bool AddItem(ItemEntity itemEntity, int weight, int value) {
         if (_firstFreeSlot >= _itemSlots.Length) return false;
         
-        _itemSlots[_firstFreeSlot].SetItem(itemEntity);
+        _itemSlots[_firstFreeSlot].SetItem(itemEntity, weight, value);
         _itemSlots[_firstFreeSlot].gameObject.SetActive(true);
         _firstFreeSlot++;
         
         return true;
     }
 
-    public void DropItem(int index) {
+    private void DropItem(int index) {
         gameController.DropItem(_itemSlots[index].itemEntity);
         _itemSlots[index].RemoveItem();
         _itemSlots[index].gameObject.SetActive(false);

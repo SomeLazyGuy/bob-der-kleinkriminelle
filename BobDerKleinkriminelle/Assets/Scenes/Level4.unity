@@ -1400,7 +1400,7 @@ MonoBehaviour:
   tooHeavyText: {fileID: 511502368}
   inventoryFullText: {fileID: 1544333010}
   maxWeight: 10
-  isGreedy: 1
+  isGreedy: 0
 --- !u!1 &1502328268
 GameObject:
   m_ObjectHideFlags: 0

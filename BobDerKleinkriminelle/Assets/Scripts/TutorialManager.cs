@@ -5,20 +5,26 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
+using static Table;
+using System.Linq;
 
 public class TutorialManager : MonoBehaviour{
-    public GameObject tutorialCanvas;
-    public Button tutorialCloseButton;
+    //public GameObject tutorialCanvas;
+    //public Button tutorialCloseButton;
+    [SerializeField] private GameObject tablePrefab;
+    [SerializeField] private Transform contentContainer; 
+    public Button nextButton;
     public TextMeshProUGUI tutorialText;
+    private int contentPage;
     void Start()
     {
-        if(tutorialCloseButton != null){
-            tutorialCloseButton.onClick.AddListener(OnCloseButtonClicked);
+        if(nextButton != null){
+            nextButton.onClick.AddListener(OnNextButtonClicked);
         }else{
-            Debug.LogError("TutorialCloseButton is null");
+            Debug.LogError("NextButton is null");
         }
         tutorialText.fontSize = 9.5f;
-        SetTutorialText();
+        SetTutorialContent();
     }
 
     // Update is called once per frame
@@ -27,18 +33,36 @@ public class TutorialManager : MonoBehaviour{
         
     }
 
-    private void OnCloseButtonClicked(){
-        tutorialCanvas.SetActive(false);
+    private void OnNextButtonClicked(){
+        //tutorialCanvas.SetActive(false);
+        Debug.Log($"Next Button Clicked. Incrementing content page from {contentPage} to {contentPage+1}.");
+        contentPage++;
+        SetTutorialContent();
     }
 
-    public void SetTutorialText(){
+    public void SetTutorialContent(){
         Scene currentScene = SceneManager.GetActiveScene();
         Debug.Log($"[SetTutorialText] Current Scene is: {currentScene.name}");
         string tutorialMessage = "";
 
         switch(currentScene.name){
             case "Level1":
-                tutorialMessage = Level_1_Message;
+                if(contentPage == 0){
+                    String lvl1TODO = "Hier kommt noch der Text für die Einführung in Level 1.";
+                    StartCoroutine(AnimateText(lvl1TODO, 0.075f));
+                }else if(contentPage == 1){
+                    GameObject tableInstance = Instantiate(tablePrefab, contentContainer);
+                    StartCoroutine(AnimateText("", 0f));
+                    tableInstance.SetActive(true);
+                    
+                    RectTransform rectTransform = tableInstance.GetComponent<RectTransform>();
+                    rectTransform.anchoredPosition = Vector2.zero;
+                    rectTransform.offsetMin = Vector2.zero;
+                    rectTransform.offsetMax = Vector2.zero;
+                    rectTransform.localScale = Vector3.one;
+                }else{
+                    Debug.LogError($"Unknown content page: {contentPage}");
+                }
                 break;
             case "Level2":
                 tutorialMessage = "Das hier ist ein Platzhaltertext für die Einführung in Level 2.";
@@ -47,8 +71,6 @@ public class TutorialManager : MonoBehaviour{
                 Debug.LogError($"Unknown scene: {currentScene.name}");
                 break;
         }
-
-        StartCoroutine(AnimateText(tutorialMessage, 0.075f));
     }
 
     private IEnumerator AnimateText(string message, float delay){
@@ -63,7 +85,7 @@ public class TutorialManager : MonoBehaviour{
         }
     }
 
-    private String Level_1_Message = "Bei dem Knapsack- bzw. Rucksackproblem geht es darum, eine Auswahl " + 
+    private String Level_1_Message = "BBei dem Knapsack- bzw. Rucksackproblem geht es darum, eine Auswahl " + 
     "von Objekten mit bestimmten Gewichten und Werten in einen Rucksack mit begrenzter Tragfähigkeit zu packen." + 
     " Ziel ist es, den Gesamtwert der ausgewählten Objekte zu maximieren, ohne das Gewichtslimit zu " + 
     "überschreiten.\n\nIm 0/1 Knapsack-Problem sind die Objekte nicht teilbar, was bedeutet, dass man jedes " + 

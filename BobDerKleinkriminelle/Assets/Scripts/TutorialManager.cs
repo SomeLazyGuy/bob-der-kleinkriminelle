@@ -51,8 +51,16 @@ public class TutorialManager : MonoBehaviour{
                     String lvl1TODO = "Hier kommt noch der Text für die Einführung in Level 1.";
                     StartCoroutine(AnimateText(lvl1TODO, 0.075f));
                 }else if(contentPage == 1){
+                    //StartCoroutine(AnimateText("", 0f));
+
+                                    // Clear existing content
+                    foreach (Transform child in contentContainer) {
+                        Destroy(child.gameObject);
+                    }
                     GameObject tableInstance = Instantiate(tablePrefab, contentContainer);
-                    StartCoroutine(AnimateText("", 0f));
+                    tableInstance.transform.localScale = Vector3.one;
+                    tableInstance.transform.localPosition = Vector3.zero;
+                    tableInstance.transform.localRotation = Quaternion.identity;
                     tableInstance.SetActive(true);
                     
                     RectTransform rectTransform = tableInstance.GetComponent<RectTransform>();

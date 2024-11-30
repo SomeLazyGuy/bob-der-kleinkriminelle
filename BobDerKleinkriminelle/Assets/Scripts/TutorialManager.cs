@@ -7,15 +7,18 @@ using UnityEngine.SceneManagement;
 using System;
 using static Table;
 using System.Linq;
+using System.Data.Common;
 
 public class TutorialManager : MonoBehaviour{
     //public GameObject tutorialCanvas;
     //public Button tutorialCloseButton;
+    [SerializeField] private GameObject tutorialCanvas;
     [SerializeField] private GameObject tablePrefab;
     [SerializeField] private Transform contentContainer; 
     public Button nextButton;
     public TextMeshProUGUI tutorialText;
     private int contentPage;
+    private Boolean isFinished = false;
     void Start()
     {
         if(nextButton != null){
@@ -33,17 +36,32 @@ public class TutorialManager : MonoBehaviour{
         
     }
 
+    public void ChallengeFinished(){
+        isFinished = true;
+        nextButton.interactable = true;
+    }
+
+    public void CloseTable(){
+        tutorialCanvas.SetActive(false);
+    }
     private void OnNextButtonClicked(){
         //tutorialCanvas.SetActive(false);
         Debug.Log($"Next Button Clicked. Incrementing content page from {contentPage} to {contentPage+1}.");
         contentPage++;
-        SetTutorialContent();
+        if(isFinished){
+            Debug.Log("Tutorial is finished. Closing tutorial canvas.");
+            tutorialCanvas.SetActive(false);
+        }else{
+            SetTutorialContent();
+        }
+        
     }
 
     public void SetTutorialContent(){
         Scene currentScene = SceneManager.GetActiveScene();
         Debug.Log($"[SetTutorialText] Current Scene is: {currentScene.name}");
         string tutorialMessage = "";
+        
 
         switch(currentScene.name){
             case "Level1":
@@ -51,9 +69,8 @@ public class TutorialManager : MonoBehaviour{
                     String lvl1TODO = "Hier kommt noch der Text für die Einführung in Level 1.";
                     StartCoroutine(AnimateText(lvl1TODO, 0.075f));
                 }else if(contentPage == 1){
-                    //StartCoroutine(AnimateText("", 0f));
+                    nextButton.interactable = false;
 
-                                    // Clear existing content
                     foreach (Transform child in contentContainer) {
                         Destroy(child.gameObject);
                     }

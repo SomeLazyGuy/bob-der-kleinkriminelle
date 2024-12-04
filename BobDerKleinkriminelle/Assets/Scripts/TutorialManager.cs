@@ -78,6 +78,7 @@ public class TutorialManager : MonoBehaviour{
                     tableInstance.transform.localScale = Vector3.one;
                     tableInstance.transform.localPosition = Vector3.zero;
                     tableInstance.transform.localRotation = Quaternion.identity;
+                    tableInstance.GetComponent<Table>().tutorialManager = this;
                     tableInstance.SetActive(true);
                     
                     RectTransform rectTransform = tableInstance.GetComponent<RectTransform>();

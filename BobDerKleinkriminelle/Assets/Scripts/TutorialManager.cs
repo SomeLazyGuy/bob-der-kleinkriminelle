@@ -66,9 +66,10 @@ public class TutorialManager : MonoBehaviour{
         switch(currentScene.name){
             case "Level1":
                 if(contentPage == 0){
-                    String lvl1TODO = "Hier kommt noch der Text für die Einführung in Level 1.";
-                    StartCoroutine(AnimateText(lvl1TODO, 0.075f));
+                    StartCoroutine(AnimateText(Level_1_Message_Part1, 0.075f));
                 }else if(contentPage == 1){
+                    StartCoroutine(AnimateText(Level_1_Message_Part2, 0.075f));         
+                }else if(contentPage == 2){
                     nextButton.interactable = false;
 
                     foreach (Transform child in contentContainer) {
@@ -111,12 +112,14 @@ public class TutorialManager : MonoBehaviour{
         }
     }
 
-    private String Level_1_Message = "BBei dem Knapsack- bzw. Rucksackproblem geht es darum, eine Auswahl " + 
+    private String Level_1_Message_Part1 = "BBei dem Knapsack- bzw. Rucksackproblem geht es darum, eine Auswahl " + 
     "von Objekten mit bestimmten Gewichten und Werten in einen Rucksack mit begrenzter Tragfähigkeit zu packen." + 
     " Ziel ist es, den Gesamtwert der ausgewählten Objekte zu maximieren, ohne das Gewichtslimit zu " + 
     "überschreiten.\n\nIm 0/1 Knapsack-Problem sind die Objekte nicht teilbar, was bedeutet, dass man jedes " + 
     "Objekt entweder vollständig in den Rucksack packt oder gar nicht. Du wirst zur Lösung den Greedy-Algorithmus " + 
-    "und die dynamische Programmierung kennenlernen.\n\n Beim Greedy-Algorithmus berechnest du das " + 
+    "und die dynamische Programmierung kennenlernen.";
+
+    private String Level_1_Message_Part2 = "Beim Greedy-Algorithmus berechnest du das " + 
     "Wert-zu-Gewicht-Verhältnis, genau wie das Preis-Leistungs-Verhältnis bei Lebensmitteln. Es wird solange " + 
     "der Rucksack mit den günstigsten Objekten gefüllt, bis das nächste nicht mehr passt. Dieser Ansatz führt " + 
     "jedoch nicht immer zur optimalen Lösung, da er nicht alle möglichen Kombinationen berücksichtigt.\n\n Die " + 

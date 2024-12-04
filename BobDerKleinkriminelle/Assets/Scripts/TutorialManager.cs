@@ -82,10 +82,11 @@ public class TutorialManager : MonoBehaviour{
                 break;
             case "Level2":
                 switch(contentPage){
-                    case 0:
+                    /*case 0:
                         StartCoroutine(AnimateText(Level_2_Message, 0.00000075f));
-                        break;
-                    case 1:
+                        break;*/
+                    //case 1:
+                    case 0:
                         ClearText();
                         InstantiateTable();
                         break;

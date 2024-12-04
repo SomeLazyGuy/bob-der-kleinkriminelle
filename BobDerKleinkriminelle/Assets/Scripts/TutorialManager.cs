@@ -66,33 +66,34 @@ public class TutorialManager : MonoBehaviour{
         switch(currentScene.name){
             case "Level1":
                 if(contentPage == 0){
-                    StartCoroutine(AnimateText(Level_1_Message_Part1, 0.075f));
+                    
+                    //StartCoroutine(AnimateText(Level_1_Message_Part1, 0.075f));
+                    StartCoroutine(AnimateText(Level_1_Message_Part1, 0.00000075f));    // TESTING
                 }else if(contentPage == 1){
-                    StartCoroutine(AnimateText(Level_1_Message_Part2, 0.075f));         
+                    //StartCoroutine(AnimateText(Level_1_Message_Part2, 0.075f)); 
+                    StartCoroutine(AnimateText(Level_1_Message_Part2, 0.00000075f));    // TESTING    
                 }else if(contentPage == 2){
                     nextButton.interactable = false;
-
-                    foreach (Transform child in contentContainer) {
-                        Destroy(child.gameObject);
-                    }
-                    GameObject tableInstance = Instantiate(tablePrefab, contentContainer);
-                    tableInstance.transform.localScale = Vector3.one;
-                    tableInstance.transform.localPosition = Vector3.zero;
-                    tableInstance.transform.localRotation = Quaternion.identity;
-                    tableInstance.GetComponent<Table>().tutorialManager = this;
-                    tableInstance.SetActive(true);
-                    
-                    RectTransform rectTransform = tableInstance.GetComponent<RectTransform>();
-                    rectTransform.anchoredPosition = Vector2.zero;
-                    rectTransform.offsetMin = Vector2.zero;
-                    rectTransform.offsetMax = Vector2.zero;
-                    rectTransform.localScale = Vector3.one;
+                    ClearText();
+                    InstantiateTable();
                 }else{
                     Debug.LogError($"Unknown content page: {contentPage}");
                 }
                 break;
             case "Level2":
-                tutorialMessage = "Das hier ist ein Platzhaltertext für die Einführung in Level 2.";
+                switch(contentPage){
+                    case 0:
+                        StartCoroutine(AnimateText(Level_2_Message, 0.00000075f));
+                        break;
+                    case 1:
+                        ClearText();
+                        InstantiateTable();
+                        break;
+                    default:
+                        Debug.LogError($"Unknown content page: {contentPage}");
+                        break;
+                }
+                
                 break;
             default:
                 Debug.LogError($"Unknown scene: {currentScene.name}");
@@ -101,18 +102,40 @@ public class TutorialManager : MonoBehaviour{
     }
 
     private IEnumerator AnimateText(string message, float delay){
+        nextButton.interactable = false;
         tutorialText.text = "";
-        foreach(char letter in message.ToCharArray())
-        {
+        foreach(char letter in message.ToCharArray()){
             tutorialText.text += letter;
             if(letter == ' ' || letter == '\n'){
                 continue;
             }
             yield return new WaitForSeconds(delay);
         }
+        nextButton.interactable = true;
     }
 
-    private String Level_1_Message_Part1 = "BBei dem Knapsack- bzw. Rucksackproblem geht es darum, eine Auswahl " + 
+    private void InstantiateTable(){
+        GameObject tableInstance = Instantiate(tablePrefab, contentContainer);
+        tableInstance.transform.localScale = Vector3.one;
+        tableInstance.transform.localPosition = Vector3.zero;
+        tableInstance.transform.localRotation = Quaternion.identity;
+        tableInstance.GetComponent<Table>().tutorialManager = this;
+        tableInstance.SetActive(true);
+        
+        RectTransform rectTransform = tableInstance.GetComponent<RectTransform>();
+        rectTransform.anchoredPosition = Vector2.zero;
+        rectTransform.offsetMin = Vector2.zero;
+        rectTransform.offsetMax = Vector2.zero;
+        rectTransform.localScale = Vector3.one;
+    }
+
+    private void ClearText(){
+        foreach (Transform child in contentContainer) {
+            Destroy(child.gameObject);
+        }
+    }
+
+    private String Level_1_Message_Part1 = "Bei dem Knapsack- bzw. Rucksackproblem geht es darum, eine Auswahl " + 
     "von Objekten mit bestimmten Gewichten und Werten in einen Rucksack mit begrenzter Tragfähigkeit zu packen." + 
     " Ziel ist es, den Gesamtwert der ausgewählten Objekte zu maximieren, ohne das Gewichtslimit zu " + 
     "überschreiten.\n\nIm 0/1 Knapsack-Problem sind die Objekte nicht teilbar, was bedeutet, dass man jedes " + 
@@ -122,9 +145,14 @@ public class TutorialManager : MonoBehaviour{
     private String Level_1_Message_Part2 = "Beim Greedy-Algorithmus berechnest du das " + 
     "Wert-zu-Gewicht-Verhältnis, genau wie das Preis-Leistungs-Verhältnis bei Lebensmitteln. Es wird solange " + 
     "der Rucksack mit den günstigsten Objekten gefüllt, bis das nächste nicht mehr passt. Dieser Ansatz führt " + 
-    "jedoch nicht immer zur optimalen Lösung, da er nicht alle möglichen Kombinationen berücksichtigt.\n\n Die " + 
+    "jedoch nicht immer zur optimalen Lösung, da er nicht alle möglichen Kombinationen berücksichtigt.\n\nDie " + 
     "dynamische Programmierung ist eine systematischere Methode, die alle möglichen Kombinationen von Objekten " + 
     "analysiert und die optimalen Lösungen für Teilprobleme speichert. Dieser Ansatz garantiert eine optimale " + 
     "Lösung, ist jedoch rechenintensiver.\n\nBobs Aufgabe ist es in diesem Level, einen möglichst hohen Wert in " + 
     "seinen Beutel zu stopfen. Bedenke, dass er nur begrenzt Beute tragen kann, da er noch fliehen muss!";
+
+    private String Level_2_Message = "Okay, jetzt sollst du gem. dem Greedy-Algorithmus die Objekte mit der besten " +
+    "Wertigkeit auswählen, bis der Rucksack voll ist. Fange mit dem wertvollsten Objekt an, gefolgt von dem" + 
+    " zweitwertvollsten etc.\n\n" + "In der folgenden Tabelle siehst du die Objekte mit ihren Werten und Gewichten. " +
+    "Die Wertigkeit kannst du einfach berechnen, indem du den Wert durch das Gewicht teilst.";
 }

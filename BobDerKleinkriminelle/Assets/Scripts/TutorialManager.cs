@@ -14,6 +14,7 @@ public class TutorialManager : MonoBehaviour{
     //public Button tutorialCloseButton;
     [SerializeField] private GameObject tutorialCanvas;
     [SerializeField] private GameObject tablePrefab;
+    [SerializeField] private GameObject tablePrefab2;
     [SerializeField] private Transform contentContainer; 
     public Button nextButton;
     public TextMeshProUGUI tutorialText;
@@ -75,30 +76,40 @@ public class TutorialManager : MonoBehaviour{
                 }else if(contentPage == 2){
                     nextButton.interactable = false;
                     ClearText();
-                    InstantiateTable();
+                    InstantiateTable(tablePrefab);
                 }else{
                     Debug.LogError($"Unknown content page: {contentPage}");
                 }
                 break;
             case "Level2":
+                ClearText();
+                InstantiateTable(tablePrefab);
+            break;
+            case "Level3":
+                ClearText();
+                InstantiateTable(tablePrefab);
+                break;
+            case "Level4":
+                ClearText();
+                InstantiateTable(tablePrefab);
+                break;
+            case "Level5":
                 switch(contentPage){
-                    /*case 0:
-                        StartCoroutine(AnimateText(Level_2_Message, 0.00000075f));
-                        break;*/
-                    //case 1:
                     case 0:
-                        ClearText();
-                        InstantiateTable();
-                        break;
+                        InstantiateTable(tablePrefab);
+                    break;
+                    case 1:
+                        InstantiateTable(tablePrefab2);
+                    break;
                     default:
                         Debug.LogError($"Unknown content page: {contentPage}");
-                        break;
-                }
-                
-                break;
+                    break;
+                }    
+            break;
             default:
                 Debug.LogError($"Unknown scene: {currentScene.name}");
-                break;
+            break;
+
         }
     }
 
@@ -115,7 +126,7 @@ public class TutorialManager : MonoBehaviour{
         nextButton.interactable = true;
     }
 
-    private void InstantiateTable(){
+    private void InstantiateTable(GameObject tablePrefab){
         GameObject tableInstance = Instantiate(tablePrefab, contentContainer);
         tableInstance.transform.localScale = Vector3.one;
         tableInstance.transform.localPosition = Vector3.zero;

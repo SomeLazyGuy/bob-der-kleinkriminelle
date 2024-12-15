@@ -21,7 +21,7 @@ public class TutorialManager : MonoBehaviour{
     [SerializeField] private Button answerButton1;
     [SerializeField] private Button answerButton2;
     [SerializeField] private Button answerButton3;
-    [SerializeField] private int correctAnswerIndex;
+    [SerializeField] private int correctAnswerIndex = 2;    // TODO: TESTING
 
 
 
@@ -156,20 +156,29 @@ public class TutorialManager : MonoBehaviour{
     }
 
     private void InstantiateQuiz(GameObject quizPrefab) {
-        SetupQuizButtons();
         GameObject quizInstance = Instantiate(quizPrefab, contentContainer);
         RectTransform rectTransform = quizInstance.GetComponent<RectTransform>();
-        rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+        /*rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
         rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
         rectTransform.pivot = new Vector2(0.5f, 0.5f);
         rectTransform.anchoredPosition = Vector2.zero;
         rectTransform.sizeDelta = new Vector2(800, 600); // Adjust size as needed
-        rectTransform.localScale = Vector3.one;
+        rectTransform.localScale = Vector3.one;*/
 
+        SetupQuizButtons(quizInstance);
         quizInstance.SetActive(true);
     }
 
-    private void SetupQuizButtons(){
+    private void SetupQuizButtons(GameObject quizInstance) {
+        Transform quizPanel = quizInstance.transform.Find("QuizPanel");
+        Transform buttonContainer = quizPanel.Find("ButtonContainer");
+
+
+        answerButton0 = GameObject.Find("AnswerButton0").GetComponent<Button>();
+        answerButton1 = GameObject.Find("AnswerButton1").GetComponent<Button>();
+        answerButton2 = GameObject.Find("AnswerButton2").GetComponent<Button>();
+        answerButton3 = GameObject.Find("AnswerButton3").GetComponent<Button>();
+
         answerButton0.onClick.AddListener(() => OnAnswerButtonClicked(answerButton0));
         answerButton1.onClick.AddListener(() => OnAnswerButtonClicked(answerButton1));
         answerButton2.onClick.AddListener(() => OnAnswerButtonClicked(answerButton2));
@@ -179,30 +188,30 @@ public class TutorialManager : MonoBehaviour{
     private void OnAnswerButtonClicked(Button clickedButton) {
         Debug.Log($"Answer button clicked: {clickedButton.name}");
         switch(clickedButton.name){
-            case "answerButton0":
+            case "AnswerButton0":
                 Debug.Log("Answer 0 clicked");
                 CheckAnswer(clickedButton, 0);
                 break;
-            case "answerButton1":
+            case "AnswerButton1":
                 Debug.Log("Answer 1 clicked");
                 CheckAnswer(clickedButton, 1);
                 break;
-            case "answerButton2":
+            case "AnswerButton2":
                 Debug.Log("Answer 2 clicked");
                 CheckAnswer(clickedButton, 2);
                 break;
-            case "answerButton3":
+            case "AnswerButton3":
                 Debug.Log("Answer 3 clicked");
                 CheckAnswer(clickedButton, 3);
                 break;
             default:
-                Debug.LogError("Unknown answer button clicked");
+                Debug.LogError("Unknown answer button clicked: " + clickedButton.name);
                 break;
         }
     }
 
     private void CheckAnswer(Button clickedButton, int index){
-        if(correctAnswerIndex == 0){
+        if(correctAnswerIndex == index){	
             Debug.Log("Correct Answer");
             clickedButton.GetComponent<Image>().color = Color.green;
             nextButton.interactable = true;

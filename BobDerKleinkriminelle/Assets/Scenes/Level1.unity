@@ -1918,9 +1918,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1713452605462670325, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
+      propertyPath: quizPrefab
+      value: 
+      objectReference: {fileID: 6091523481559154467, guid: fef97bd53e2be104d9f7c084cfd4eb12, type: 3}
+    - target: {fileID: 1713452605462670325, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
       propertyPath: tablePrefab
       value: 
-      objectReference: {fileID: 8229472459155523413, guid: fb2cfb31ebde14ea3aca647c4d677def, type: 3}
+      objectReference: {fileID: 8290502521165535344, guid: d0bb95c02fcc3a94cadd1d32516cd9d5, type: 3}
     - target: {fileID: 1713452605462670325, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
       propertyPath: tutorialCanvas
       value: 
@@ -2011,6 +2015,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1983426890698160023, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2840420902974476662, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
+      propertyPath: m_MatchWidthOrHeight
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5151498259103314863, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}

@@ -13,9 +13,18 @@ public class TutorialManager : MonoBehaviour{
     //public GameObject tutorialCanvas;
     //public Button tutorialCloseButton;
     [SerializeField] private GameObject tutorialCanvas;
+    [SerializeField] private GameObject quizPrefab;
     [SerializeField] private GameObject tablePrefab;
     [SerializeField] private GameObject tablePrefab2;
     [SerializeField] private Transform contentContainer; 
+    [SerializeField] private Button answerButton0;
+    [SerializeField] private Button answerButton1;
+    [SerializeField] private Button answerButton2;
+    [SerializeField] private Button answerButton3;
+    [SerializeField] private int correctAnswerIndex;
+
+
+
     public Button nextButton;
     public TextMeshProUGUI tutorialText;
     private int contentPage;
@@ -67,9 +76,14 @@ public class TutorialManager : MonoBehaviour{
         switch(currentScene.name){
             case "Level1":
                 if(contentPage == 0){
-                    
                     //StartCoroutine(AnimateText(Level_1_Message_Part1, 0.075f));
-                    StartCoroutine(AnimateText(Level_1_Message_Part1, 0.00000075f));    // TESTING
+                    //StartCoroutine(AnimateText(Level_1_Message_Part1, 0.00000075f));    // TESTING
+                    
+                    // TESTING
+                    InstantiateQuiz(quizPrefab);    // TESTING
+                    nextButton.interactable = false;    // TESTING
+                    
+
                 }else if(contentPage == 1){
                     //StartCoroutine(AnimateText(Level_1_Message_Part2, 0.075f)); 
                     StartCoroutine(AnimateText(Level_1_Message_Part2, 0.00000075f));    // TESTING    
@@ -139,6 +153,63 @@ public class TutorialManager : MonoBehaviour{
         rectTransform.offsetMin = Vector2.zero;
         rectTransform.offsetMax = Vector2.zero;
         rectTransform.localScale = Vector3.one;
+    }
+
+    private void InstantiateQuiz(GameObject quizPrefab) {
+        SetupQuizButtons();
+        GameObject quizInstance = Instantiate(quizPrefab, contentContainer);
+        RectTransform rectTransform = quizInstance.GetComponent<RectTransform>();
+        rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+        rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+        rectTransform.pivot = new Vector2(0.5f, 0.5f);
+        rectTransform.anchoredPosition = Vector2.zero;
+        rectTransform.sizeDelta = new Vector2(800, 600); // Adjust size as needed
+        rectTransform.localScale = Vector3.one;
+
+        quizInstance.SetActive(true);
+    }
+
+    private void SetupQuizButtons(){
+        answerButton0.onClick.AddListener(() => OnAnswerButtonClicked(answerButton0));
+        answerButton1.onClick.AddListener(() => OnAnswerButtonClicked(answerButton1));
+        answerButton2.onClick.AddListener(() => OnAnswerButtonClicked(answerButton2));
+        answerButton3.onClick.AddListener(() => OnAnswerButtonClicked(answerButton3));
+    }
+
+    private void OnAnswerButtonClicked(Button clickedButton) {
+        Debug.Log($"Answer button clicked: {clickedButton.name}");
+        switch(clickedButton.name){
+            case "answerButton0":
+                Debug.Log("Answer 0 clicked");
+                CheckAnswer(clickedButton, 0);
+                break;
+            case "answerButton1":
+                Debug.Log("Answer 1 clicked");
+                CheckAnswer(clickedButton, 1);
+                break;
+            case "answerButton2":
+                Debug.Log("Answer 2 clicked");
+                CheckAnswer(clickedButton, 2);
+                break;
+            case "answerButton3":
+                Debug.Log("Answer 3 clicked");
+                CheckAnswer(clickedButton, 3);
+                break;
+            default:
+                Debug.LogError("Unknown answer button clicked");
+                break;
+        }
+    }
+
+    private void CheckAnswer(Button clickedButton, int index){
+        if(correctAnswerIndex == 0){
+            Debug.Log("Correct Answer");
+            clickedButton.GetComponent<Image>().color = Color.green;
+            nextButton.interactable = true;
+        } else {
+            Debug.Log("Wrong Answer");
+            clickedButton.GetComponent<Image>().color = Color.red;
+        }
     }
 
     private void ClearText(){

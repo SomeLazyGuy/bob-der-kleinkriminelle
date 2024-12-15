@@ -3,7 +3,18 @@ guid: d12b0565072477241acf8d413049fdb2
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - tutorialCanvas: {instanceID: 0}
+  - quizPrefab: {fileID: 2564036414440471156, guid: 7e8781506330bc74a921502e29dacf40, type: 3}
+  - tablePrefab: {instanceID: 0}
+  - tablePrefab2: {instanceID: 0}
+  - contentContainer: {instanceID: 0}
+  - answerButton0: {instanceID: 0}
+  - answerButton1: {instanceID: 0}
+  - answerButton2: {instanceID: 0}
+  - answerButton3: {instanceID: 0}
+  - nextButton: {instanceID: 0}
+  - tutorialText: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

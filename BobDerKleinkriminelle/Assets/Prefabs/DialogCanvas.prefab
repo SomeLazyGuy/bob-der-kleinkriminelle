@@ -115,9 +115,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d12b0565072477241acf8d413049fdb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialCanvas: {fileID: 0}
-  tablePrefab: {fileID: 0}
-  contentContainer: {fileID: 0}
+  tutorialCanvas: {fileID: 1483288919918974513}
+  quizPrefab: {fileID: 2564036414440471156, guid: 7e8781506330bc74a921502e29dacf40, type: 3}
+  tablePrefab: {fileID: 8290502521165535344, guid: d0bb95c02fcc3a94cadd1d32516cd9d5, type: 3}
+  tablePrefab2: {fileID: 0}
+  contentContainer: {fileID: 8464366678868063144}
+  answerButton0: {fileID: 1608030675720595279}
+  answerButton1: {fileID: 1608030675720595279}
+  answerButton2: {fileID: 1608030675720595279}
+  answerButton3: {fileID: 1608030675720595279}
+  correctAnswerIndex: 0
   nextButton: {fileID: 1608030675720595279}
   tutorialText: {fileID: 5151498259103314863}
 --- !u!1 &2604707338372228121
@@ -505,7 +512,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5809276241558708885
 RectTransform:
   m_ObjectHideFlags: 0

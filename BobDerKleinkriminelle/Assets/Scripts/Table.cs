@@ -12,8 +12,6 @@ public class Table : MonoBehaviour {
     
     private bool _finished = false;
     private int _solvedCount = 0;
-
-    // 600, 252
     
     private void Update() {
         if (_finished) return;

@@ -14,6 +14,11 @@ public class TutorialManager : MonoBehaviour{
     //public Button tutorialCloseButton;
     [SerializeField] private GameObject tutorialCanvas;
     [SerializeField] private GameObject quizPrefab;
+    [SerializeField] private String quizQuestion;
+    [SerializeField] private String quizAnswer0;
+    [SerializeField] private String quizAnswer1;
+    [SerializeField] private String quizAnswer2;
+    [SerializeField] private String quizAnswer3;
     [SerializeField] private GameObject tablePrefab;
     [SerializeField] private GameObject tablePrefab2;
     [SerializeField] private Transform contentContainer; 
@@ -55,49 +60,79 @@ public class TutorialManager : MonoBehaviour{
         tutorialCanvas.SetActive(false);
     }
     private void OnNextButtonClicked(){
-        //tutorialCanvas.SetActive(false);
         Debug.Log($"Next Button Clicked. Incrementing content page from {contentPage} to {contentPage+1}.");
         contentPage++;
-        if(isFinished){
-            Debug.Log("Tutorial is finished. Closing tutorial canvas.");
-            tutorialCanvas.SetActive(false);
-        }else{
-            SetTutorialContent();
-        }
-        
+        SetTutorialContent();        
     }
 
     public void SetTutorialContent(){
         Scene currentScene = SceneManager.GetActiveScene();
-        Debug.Log($"[SetTutorialText] Current Scene is: {currentScene.name}");
-        string tutorialMessage = "";
-        
-
+        Debug.Log($"[SetTutorialText] Current Scene is: {currentScene.name}");       
         switch(currentScene.name){
             case "Level1":
-                if(contentPage == 0){
-                    //StartCoroutine(AnimateText(Level_1_Message_Part1, 0.075f));
-                    //StartCoroutine(AnimateText(Level_1_Message_Part1, 0.00000075f));    // TESTING
-                    
-                    // TESTING
-                    InstantiateQuiz(quizPrefab);    // TESTING
-                    nextButton.interactable = false;    // TESTING
-                    
-
-                }else if(contentPage == 1){
-                    //StartCoroutine(AnimateText(Level_1_Message_Part2, 0.075f)); 
-                    StartCoroutine(AnimateText(Level_1_Message_Part2, 0.00000075f));    // TESTING    
-                }else if(contentPage == 2){
-                    nextButton.interactable = false;
-                    ClearText();
-                    InstantiateTable(tablePrefab);
-                }else{
-                    Debug.LogError($"Unknown content page: {contentPage}");
+                switch(contentPage){
+                    case 0:
+                        StartCoroutine(AnimateText(Level_1_Message_Part1, 0.00000075f));    // TODO: Adjust speed after testing phase
+                        break;
+                    case 1:
+                        StartCoroutine(AnimateText(Level_1_Message_Part2, 0.00000075f));    // TODO: Adjust speed after testing phase
+                        break;
+                    case 2:
+                        ClearText();
+                        nextButton.interactable = false;
+                        InstantiateTable(tablePrefab);
+                        break;
+                    case 3:
+                        nextButton.interactable = false;
+                        ClearGameObject(tablePrefab);
+                        InstantiateQuiz(quizPrefab);
+                        break;
+                    case 4:
+                        ClearGameObject(quizPrefab);
+                        ClearText();
+                        StartCoroutine(AnimateText(Level_1_Message_Part3, 0.05f));    // TODO: Adjust speed after testing phase
+                        break;
+                    case 5:
+                        tutorialCanvas.SetActive(false);
+                        break;
+                    default:
+                        Debug.LogError($"Unknown content page: {contentPage}");
+                        break;
                 }
                 break;
             case "Level2":
-                ClearText();
-                InstantiateTable(tablePrefab);
+                switch(contentPage){
+                    case 0:
+                        StartCoroutine(AnimateText(Level_2_Message_Part1, 0.00000075f));    // TODO: Adjust speed after testing phase
+                        break;
+                    case 1:
+                        ClearText();
+                        nextButton.interactable = false;
+                        InstantiateTable(tablePrefab);
+                        break;
+                    case 2:
+                        nextButton.interactable = false;
+                        ClearGameObject(tablePrefab);
+                        InstantiateQuiz(quizPrefab);
+                        break;
+                    case 3:
+                        nextButton.interactable = false;
+                        ClearGameObject(quizPrefab);    
+                        quizQuestion = "Welches Objekt packst du als nächstes ein?";
+                        quizAnswer0 = "Geld";
+                        quizAnswer1 = "Schmuck";
+                        quizAnswer2 = "Goldmünzen"; // <- Correct Answer
+                        quizAnswer3 = "Edelsteine";
+                        correctAnswerIndex = 2;
+                        InstantiateQuiz(quizPrefab);
+                        break;
+                    case 4:
+                        tutorialCanvas.SetActive(false);
+                        break;
+                    default:
+                        Debug.LogError($"Unknown content page: {contentPage}");
+                        break;  
+                }                
             break;
             case "Level3":
                 ClearText();
@@ -158,13 +193,9 @@ public class TutorialManager : MonoBehaviour{
     private void InstantiateQuiz(GameObject quizPrefab) {
         GameObject quizInstance = Instantiate(quizPrefab, contentContainer);
         RectTransform rectTransform = quizInstance.GetComponent<RectTransform>();
-        /*rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
-        rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
-        rectTransform.pivot = new Vector2(0.5f, 0.5f);
-        rectTransform.anchoredPosition = Vector2.zero;
-        rectTransform.sizeDelta = new Vector2(800, 600); // Adjust size as needed
-        rectTransform.localScale = Vector3.one;*/
-
+        Transform quizPanel = quizInstance.transform.Find("QuizPanel");
+        TextMeshProUGUI questionText = quizPanel.Find("QuestionText").GetComponent<TextMeshProUGUI>();
+        questionText.text = quizQuestion;
         SetupQuizButtons(quizInstance);
         quizInstance.SetActive(true);
     }
@@ -172,17 +203,31 @@ public class TutorialManager : MonoBehaviour{
     private void SetupQuizButtons(GameObject quizInstance) {
         Transform quizPanel = quizInstance.transform.Find("QuizPanel");
         Transform buttonContainer = quizPanel.Find("ButtonContainer");
-
-
-        answerButton0 = GameObject.Find("AnswerButton0").GetComponent<Button>();
-        answerButton1 = GameObject.Find("AnswerButton1").GetComponent<Button>();
-        answerButton2 = GameObject.Find("AnswerButton2").GetComponent<Button>();
-        answerButton3 = GameObject.Find("AnswerButton3").GetComponent<Button>();
-
-        answerButton0.onClick.AddListener(() => OnAnswerButtonClicked(answerButton0));
-        answerButton1.onClick.AddListener(() => OnAnswerButtonClicked(answerButton1));
-        answerButton2.onClick.AddListener(() => OnAnswerButtonClicked(answerButton2));
-        answerButton3.onClick.AddListener(() => OnAnswerButtonClicked(answerButton3));
+        String Weight = $"<sprite name=\"WeightHD\">";
+        String Dollar = $"<sprite name=\"DollarHD\">";
+        Button[] answerButtons = new Button[4];
+        String[] quizAnswers = new string[4];
+        
+        
+        for (int i = 0; i <= 3; i++) {
+            int index = i;
+            answerButtons[i] = buttonContainer.Find("AnswerButton" + i).GetComponent<Button>();
+            answerButtons[i].onClick.AddListener(() => OnAnswerButtonClicked(answerButtons[index]));
+            switch (i) {
+                case 0:
+                    answerButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = quizAnswer0;
+                    break;
+                case 1:
+                    answerButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = quizAnswer1;
+                    break;
+                case 2:
+                    answerButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = quizAnswer2;
+                    break;
+                case 3:
+                    answerButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = quizAnswer3;
+                    break;
+            }
+        }   
     }
 
     private void OnAnswerButtonClicked(Button clickedButton) {
@@ -222,11 +267,23 @@ public class TutorialManager : MonoBehaviour{
     }
 
     private void ClearText(){
-        foreach (Transform child in contentContainer) {
+        /*foreach (Transform child in contentContainer) {
             Destroy(child.gameObject);
+        }*/
+        tutorialText.text = "";
+        StartCoroutine(AnimateText(tutorialText.text, 0f));
+    }
+
+    private void ClearGameObject(GameObject go){
+        GameObject instance = GameObject.Find(go.name + "(Clone)");
+        if (instance != null) {
+            instance.SetActive(false);
+        } else {
+            Debug.LogError("Table instance not found");
         }
     }
 
+    /*
     private String Level_1_Message_Part1 = "Bei dem Knapsack- bzw. Rucksackproblem geht es darum, eine Auswahl " + 
     "von Objekten mit bestimmten Gewichten und Werten in einen Rucksack mit begrenzter Tragfähigkeit zu packen." + 
     " Ziel ist es, den Gesamtwert der ausgewählten Objekte zu maximieren, ohne das Gewichtslimit zu " + 
@@ -242,9 +299,25 @@ public class TutorialManager : MonoBehaviour{
     "analysiert und die optimalen Lösungen für Teilprobleme speichert. Dieser Ansatz garantiert eine optimale " + 
     "Lösung, ist jedoch rechenintensiver.\n\nBobs Aufgabe ist es in diesem Level, einen möglichst hohen Wert in " + 
     "seinen Beutel zu stopfen. Bedenke, dass er nur begrenzt Beute tragen kann, da er noch fliehen muss!";
+    */
 
+    private String Level_1_Message_Part1 = "Okay, lass uns loslegen! Du möchtest möglichst wertvolle Beute klauen, "+
+    "aber in deinen Rucksack passen nur 16 kg. Wie wählst du die Gegenstände aus, mit denen du den höchsten Wert "+
+    "erzielen kannst? Du verwendest einen Greedy Ansatz, um teilbare Mengen auszuwählen.";
+
+    private String Level_1_Message_Part2 = "Berechne die Wertigkeit pro Gewicht für jeden Gegenstand und sortiere "+
+    "die Gegenstände in absteigender Reihenfolge. Nehme zuerst die Gegenstände mit der höchsten Wertigkeit auf und "+
+    "nehme so lange weitere Gegenstände auf, bis deine Kapazität erreicht ist.\n\nIch zeig es dir an einem Beispiel. "+
+    "Gib in der folgenden Tabelle die jeweilige Werigkeit für die Gegenstände an. Verwende für Brüche die Schreibweise "+
+    "1/2 statt 0.5.";
+
+    private String Level_1_Message_Part3 = "Okay, bereit?. Wähle jetzt zuerst die Gegenstände mit dem höchsten Wert pro Gewicht aus";
     private String Level_2_Message = "Okay, jetzt sollst du gem. dem Greedy-Algorithmus die Objekte mit der besten " +
     "Wertigkeit auswählen, bis der Rucksack voll ist. Fange mit dem wertvollsten Objekt an, gefolgt von dem" + 
     " zweitwertvollsten etc.\n\n" + "In der folgenden Tabelle siehst du die Objekte mit ihren Werten und Gewichten. " +
     "Die Wertigkeit kannst du einfach berechnen, indem du den Wert durch das Gewicht teilst.";
+    private String Level_2_Message_Part1 = "Okay, jetzt haben die Goldmünzen eine  Wertigkeit von 2 ,die Edelsteine von 2/3 " +
+    "und das Geld hat eine Wertigkeit von 1/6. Jetzt fehlen nur noch die Wertigkeiten von unseren Keksen und von unserem Schmuck."+
+    "\n\nTrage sie in der folgenden Tabelle ein.\n\nTipp für Kleinkriminelle: Notiere dir auf einem Zettel die Wertigkeiten der "+
+    "Gegenstände, beor du die Tabelle schließt.";
 }

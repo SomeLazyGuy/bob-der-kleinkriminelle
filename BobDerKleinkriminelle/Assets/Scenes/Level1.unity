@@ -1922,9 +1922,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6091523481559154467, guid: fef97bd53e2be104d9f7c084cfd4eb12, type: 3}
     - target: {fileID: 1713452605462670325, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
+      propertyPath: quizAnswer0
+      value: "M\xFCnzen: 8   <sprite name=\"DollarHD\">|  4   <sprite name=\"WeightHD\"> "
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713452605462670325, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
+      propertyPath: quizAnswer1
+      value: 'Edelstein: 4   <sprite name="DollarHD">|  6   <sprite name="WeightHD"> '
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713452605462670325, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
+      propertyPath: quizAnswer2
+      value: 'Geld: 2   <sprite name="DollarHD">|  12   <sprite name="WeightHD">'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713452605462670325, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
+      propertyPath: quizAnswer3
+      value: Keinen davon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713452605462670325, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
       propertyPath: tablePrefab
       value: 
       objectReference: {fileID: 8290502521165535344, guid: d0bb95c02fcc3a94cadd1d32516cd9d5, type: 3}
+    - target: {fileID: 1713452605462670325, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
+      propertyPath: quizQuestion
+      value: Welchen Gegenstand nimmst du zuerst auf?
+      objectReference: {fileID: 0}
     - target: {fileID: 1713452605462670325, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
       propertyPath: tutorialCanvas
       value: 

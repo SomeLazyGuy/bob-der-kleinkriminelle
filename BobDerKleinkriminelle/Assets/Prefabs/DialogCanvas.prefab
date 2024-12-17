@@ -117,6 +117,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialCanvas: {fileID: 1483288919918974513}
   quizPrefab: {fileID: 2564036414440471156, guid: 7e8781506330bc74a921502e29dacf40, type: 3}
+  quizQuestion: 
+  quizAnswer0: 
+  quizAnswer1: 
+  quizAnswer2: 
+  quizAnswer3: 
   tablePrefab: {fileID: 8290502521165535344, guid: d0bb95c02fcc3a94cadd1d32516cd9d5, type: 3}
   tablePrefab2: {fileID: 0}
   contentContainer: {fileID: 8464366678868063144}
@@ -512,7 +517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5809276241558708885
 RectTransform:
   m_ObjectHideFlags: 0
@@ -595,7 +600,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0

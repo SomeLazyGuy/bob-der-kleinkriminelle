@@ -2038,28 +2038,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5151498259103314863, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
-      propertyPath: m_fontSize
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5151498259103314863, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
       propertyPath: m_fontSizeMin
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5151498259103314863, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
       propertyPath: m_fontSizeBase
       value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5151498259103314863, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
-      propertyPath: m_enableAutoSizing
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5151498259103314863, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 5151498259103314863, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5733441109363437328, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
       propertyPath: m_AnchorMax.y

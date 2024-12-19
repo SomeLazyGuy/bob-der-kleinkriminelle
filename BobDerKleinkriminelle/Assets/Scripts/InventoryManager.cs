@@ -9,11 +9,11 @@ public class InventoryManager : MonoBehaviour {
     [SerializeField] private GameObject itemSlotPrefab;
     [SerializeField] private GameObject gridContainer;
 
-    private ItemSlot[] _itemSlots = new ItemSlot[10];
+    private ItemSlot[] _itemSlots = new ItemSlot[6];
     private int _firstFreeSlot = 0;
 
     public void Initialize() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 6; i++) {
             int j = i;
             ItemSlot itemSlot = Instantiate(itemSlotPrefab, gridContainer.transform).GetComponent<ItemSlot>();
             itemSlot.dropButton.onClick.AddListener(() => {

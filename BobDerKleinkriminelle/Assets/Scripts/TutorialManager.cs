@@ -34,6 +34,7 @@ public class TutorialManager : MonoBehaviour{
     public TextMeshProUGUI tutorialText;
     private int contentPage;
     private Boolean isFinished = false;
+    
     void Start()
     {
         if(nextButton != null){
@@ -177,17 +178,8 @@ public class TutorialManager : MonoBehaviour{
 
     private void InstantiateTable(GameObject tablePrefab){
         GameObject tableInstance = Instantiate(tablePrefab, contentContainer);
-        tableInstance.transform.localScale = Vector3.one;
-        tableInstance.transform.localPosition = Vector3.zero;
-        tableInstance.transform.localRotation = Quaternion.identity;
         tableInstance.GetComponent<Table>().tutorialManager = this;
         tableInstance.SetActive(true);
-        
-        RectTransform rectTransform = tableInstance.GetComponent<RectTransform>();
-        rectTransform.anchoredPosition = Vector2.zero;
-        rectTransform.offsetMin = Vector2.zero;
-        rectTransform.offsetMax = Vector2.zero;
-        rectTransform.localScale = Vector3.one;
     }
 
     private void InstantiateQuiz(GameObject quizPrefab) {

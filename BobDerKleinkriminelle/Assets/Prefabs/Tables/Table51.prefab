@@ -110,15 +110,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 20
+    m_Left: 15
     m_Right: 0
-    m_Top: 20
+    m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 56, y: 38}
-  m_Spacing: {x: 0, y: 0}
+  m_CellSize: {x: 50, y: 35}
+  m_Spacing: {x: 2, y: 2}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &6874537195860940819
@@ -1910,6 +1910,22 @@ PrefabInstance:
     - target: {fileID: 4839703554235444639, guid: 2e18f6d2ba1c846af8621e53970b07c6, type: 3}
       propertyPath: m_text
       value: "Schraubenschl\xFCssel"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839703554235444639, guid: 2e18f6d2ba1c846af8621e53970b07c6, type: 3}
+      propertyPath: m_fontSize
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839703554235444639, guid: 2e18f6d2ba1c846af8621e53970b07c6, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839703554235444639, guid: 2e18f6d2ba1c846af8621e53970b07c6, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839703554235444639, guid: 2e18f6d2ba1c846af8621e53970b07c6, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4401,6 +4417,22 @@ PrefabInstance:
       propertyPath: m_text
       value: "Gem\xE4lde"
       objectReference: {fileID: 0}
+    - target: {fileID: 4839703554235444639, guid: 2e18f6d2ba1c846af8621e53970b07c6, type: 3}
+      propertyPath: m_fontSize
+      value: 12.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839703554235444639, guid: 2e18f6d2ba1c846af8621e53970b07c6, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839703554235444639, guid: 2e18f6d2ba1c846af8621e53970b07c6, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839703554235444639, guid: 2e18f6d2ba1c846af8621e53970b07c6, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4620,6 +4652,22 @@ PrefabInstance:
     - target: {fileID: 4839703554235444639, guid: 2e18f6d2ba1c846af8621e53970b07c6, type: 3}
       propertyPath: m_text
       value: Gold
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839703554235444639, guid: 2e18f6d2ba1c846af8621e53970b07c6, type: 3}
+      propertyPath: m_fontSize
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839703554235444639, guid: 2e18f6d2ba1c846af8621e53970b07c6, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839703554235444639, guid: 2e18f6d2ba1c846af8621e53970b07c6, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839703554235444639, guid: 2e18f6d2ba1c846af8621e53970b07c6, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5301,6 +5349,22 @@ PrefabInstance:
       propertyPath: m_text
       value: Schmuck
       objectReference: {fileID: 0}
+    - target: {fileID: 4839703554235444639, guid: 2e18f6d2ba1c846af8621e53970b07c6, type: 3}
+      propertyPath: m_fontSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839703554235444639, guid: 2e18f6d2ba1c846af8621e53970b07c6, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839703554235444639, guid: 2e18f6d2ba1c846af8621e53970b07c6, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839703554235444639, guid: 2e18f6d2ba1c846af8621e53970b07c6, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5520,6 +5584,22 @@ PrefabInstance:
     - target: {fileID: 4839703554235444639, guid: 2e18f6d2ba1c846af8621e53970b07c6, type: 3}
       propertyPath: m_text
       value: "Troph\xE4e"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839703554235444639, guid: 2e18f6d2ba1c846af8621e53970b07c6, type: 3}
+      propertyPath: m_fontSize
+      value: 13.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839703554235444639, guid: 2e18f6d2ba1c846af8621e53970b07c6, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839703554235444639, guid: 2e18f6d2ba1c846af8621e53970b07c6, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839703554235444639, guid: 2e18f6d2ba1c846af8621e53970b07c6, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

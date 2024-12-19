@@ -42,7 +42,7 @@ public class TutorialManager : MonoBehaviour{
         }else{
             Debug.LogError("NextButton is null");
         }
-        tutorialText.fontSize = 9.5f;
+
         SetTutorialContent();
     }
 
@@ -184,17 +184,15 @@ public class TutorialManager : MonoBehaviour{
 
     private void InstantiateQuiz(GameObject quizPrefab) {
         GameObject quizInstance = Instantiate(quizPrefab, contentContainer);
-        RectTransform rectTransform = quizInstance.GetComponent<RectTransform>();
-        Transform quizPanel = quizInstance.transform.Find("QuizPanel");
-        TextMeshProUGUI questionText = quizPanel.Find("QuestionText").GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI questionText = quizInstance.transform.Find("QuestionText").GetComponent<TextMeshProUGUI>();
+        
         questionText.text = quizQuestion;
         SetupQuizButtons(quizInstance);
         quizInstance.SetActive(true);
     }
 
     private void SetupQuizButtons(GameObject quizInstance) {
-        Transform quizPanel = quizInstance.transform.Find("QuizPanel");
-        Transform buttonContainer = quizPanel.Find("ButtonContainer");
+        Transform buttonContainer = quizInstance.transform.Find("ButtonContainer");
         String Weight = $"<sprite name=\"WeightHD\">";
         String Dollar = $"<sprite name=\"DollarHD\">";
         Button[] answerButtons = new Button[4];

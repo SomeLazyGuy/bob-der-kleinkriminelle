@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private Animator animator;
     [HideInInspector] public bool canMove = false;
 
     private GameController _gameManager;
     private Rigidbody2D _rigidbody2D;
     private PlayerControls _controls;
     private Vector2 _moveDirection = Vector2.zero;
-    private List<ItemEntity> _itemsInRange = new List<ItemEntity>();
+    private readonly List<ItemEntity> _itemsInRange = new List<ItemEntity>();
 
     private bool _canPickupItem = true;
     private bool _isInLevelTransition = false;
@@ -32,6 +33,10 @@ public class PlayerController : MonoBehaviour {
 
     private void Update() {
         _moveDirection = _controls.Player.Move.ReadValue<Vector2>();
+        
+        animator.SetFloat("Horizontal", _moveDirection.x);
+        animator.SetFloat("Vertical", _moveDirection.y);
+        animator.SetFloat("Speed", _moveDirection.sqrMagnitude);
         
         if ((int)_controls.Player.Interact.ReadValue<float>() == 1) {
             if (!_canPickupItem) return;

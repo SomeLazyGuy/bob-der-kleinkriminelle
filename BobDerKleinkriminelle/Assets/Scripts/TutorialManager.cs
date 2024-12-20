@@ -154,10 +154,16 @@ public class TutorialManager : MonoBehaviour{
             case "Level5":
                 switch(contentPage){
                     case 0:
+                        nextButton.interactable = false;
                         InstantiateTable(tablePrefab);
                     break;
                     case 1:
+                        nextButton.interactable = false;
+                        ClearGameObject(tablePrefab);
                         InstantiateTable(tablePrefab2);
+                    break;
+                    case 2:
+                        CloseTutorialCanvas();
                     break;
                     default:
                         Debug.LogError($"Unknown content page: {contentPage}");

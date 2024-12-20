@@ -28,6 +28,13 @@ public class TutorialManager : MonoBehaviour{
     [SerializeField] private Button answerButton2;
     [SerializeField] private Button answerButton3;
     [SerializeField] private int correctAnswerIndex = 2;    // TODO: TESTING
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip audioClip1;
+    [SerializeField] private AudioClip audioClip2;
+    [SerializeField] private AudioClip audioClip3;
+    [SerializeField] private AudioClip audioClip4;
+    [SerializeField] private AudioClip audioClip5;
+    [SerializeField] private AudioClip audioClip6; 
 
     public Button nextButton;
     public TextMeshProUGUI tutorialText;
@@ -73,9 +80,11 @@ public class TutorialManager : MonoBehaviour{
             case "Level1":
                 switch(contentPage){
                     case 0:
+                        PlayAudioClip(audioClip1);
                         StartCoroutine(AnimateText(Level_1_Message_Part1, 0.00000075f));    // TODO: Adjust speed after testing phase
                         break;
                     case 1:
+                        StopAudioSource();
                         StartCoroutine(AnimateText(Level_1_Message_Part2, 0.00000075f));    // TODO: Adjust speed after testing phase
                         break;
                     case 2:
@@ -84,16 +93,36 @@ public class TutorialManager : MonoBehaviour{
                         InstantiateTable(tablePrefab);
                         break;
                     case 3:
+                        // "Okay, bereit? Wähle zuerst die Gegenstände mit dem höchsten Wert pro Gewicht aus";
+                        ClearGameObject(tablePrefab);
+                        PlayAudioClip(audioClip2); 
+                        StartCoroutine(AnimateText(Level_1_Message_Part3, 0.05f));    // TODO: Adjust speed after testing phase
+                        break;
+                    case 4:
+                        // "Welchen Gegenstand packst du zuerst ein?"
+                        StopAudioSource();
                         nextButton.interactable = false;
                         ClearGameObject(tablePrefab);
                         InstantiateQuiz(quizPrefab);
-                        break;
-                    case 4:
-                        ClearGameObject(quizPrefab);
-                        ClearText();
-                        StartCoroutine(AnimateText(Level_1_Message_Part3, 0.05f));    // TODO: Adjust speed after testing phase
+                        PlayAudioClip(audioClip3);
                         break;
                     case 5:
+                        // "Welchen Gegenstand nimmst du als nächstes auf?"
+                        StopAudioSource();
+                        ClearGameObject(quizPrefab);  
+                        quizQuestion = "Welche Gegenstand nehmen wir als nächstes?";
+                        quizAnswer0 = "Geld";
+                        quizAnswer1 = "Schmuck";
+                        quizAnswer2 = "Goldmünzen"; // <- Correct Answer
+                        quizAnswer3 = "Edelsteine";
+                        correctAnswerIndex = 2;
+                        InstantiateQuiz(quizPrefab);
+                        ClearText();
+                        PlayAudioClip(audioClip4);
+                        break;
+                    case 6:
+                        // Wie viele Anteile kannst du vom letzten Gegenstand einpacken? 
+                    case 7:
                         CloseTutorialCanvas();
                         break;
                     default:
@@ -119,7 +148,7 @@ public class TutorialManager : MonoBehaviour{
                     case 3:
                         nextButton.interactable = false;
                         ClearGameObject(quizPrefab);    
-                        quizQuestion = "Welches Objekt packst du als nächstes ein?";
+                        quizQuestion = "Welche Gegenstand nehmen wir als nächstes?";
                         quizAnswer0 = "Geld";
                         quizAnswer1 = "Schmuck";
                         quizAnswer2 = "Goldmünzen"; // <- Correct Answer
@@ -287,6 +316,23 @@ public class TutorialManager : MonoBehaviour{
         }
     }
 
+    private void PlayAudioClip(AudioClip audioClip) {
+        if (audioSource != null && audioClip != null) {
+            audioSource.clip = audioClip;
+            audioSource.Play();
+        } else {
+            Debug.LogError("AudioSource or AudioClip is not assigned.");
+        }
+    }
+
+    private void StopAudioSource() {
+        if (audioSource != null) {
+            audioSource.Stop();
+        } else {
+            Debug.LogError("AudioSource is not assigned.");
+        }
+    }
+
     /*
     private String Level_1_Message_Part1 = "Bei dem Knapsack- bzw. Rucksackproblem geht es darum, eine Auswahl " + 
     "von Objekten mit bestimmten Gewichten und Werten in einen Rucksack mit begrenzter Tragfähigkeit zu packen." + 
@@ -315,7 +361,7 @@ public class TutorialManager : MonoBehaviour{
     "Gib in der folgenden Tabelle die jeweilige Werigkeit für die Gegenstände an. Verwende für Brüche die Schreibweise "+
     "1/2 statt 0.5.";
 
-    private String Level_1_Message_Part3 = "Okay, bereit? Wähle jetzt zuerst die Gegenstände mit dem höchsten Wert pro Gewicht aus";
+    private String Level_1_Message_Part3 = "Okay, bereit? Wähle zuerst die Gegenstände mit dem höchsten Wert pro Gewicht aus";
     private String Level_2_Message = "Okay, jetzt sollst du gem. dem Greedy-Algorithmus die Objekte mit der besten " +
     "Wertigkeit auswählen, bis der Rucksack voll ist. Fange mit dem wertvollsten Objekt an, gefolgt von dem" + 
     " zweitwertvollsten etc.\n\n" + "In der folgenden Tabelle siehst du die Objekte mit ihren Werten und Gewichten. " +

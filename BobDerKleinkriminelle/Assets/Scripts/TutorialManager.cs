@@ -136,8 +136,16 @@ public class TutorialManager : MonoBehaviour{
                 }                
             break;
             case "Level3":
-                ClearText();
-                InstantiateTable(tablePrefab);
+                switch(contentPage){
+                    case 0:
+                        ClearText();
+                        nextButton.interactable = false;
+                        InstantiateTable(tablePrefab);
+                        break;
+                    case 1:
+                        tutorialCanvas.SetActive(false);
+                        break;
+                }
                 break;
             case "Level4":
                 ClearText();
@@ -301,7 +309,7 @@ public class TutorialManager : MonoBehaviour{
     "Gib in der folgenden Tabelle die jeweilige Werigkeit für die Gegenstände an. Verwende für Brüche die Schreibweise "+
     "1/2 statt 0.5.";
 
-    private String Level_1_Message_Part3 = "Okay, bereit?. Wähle jetzt zuerst die Gegenstände mit dem höchsten Wert pro Gewicht aus";
+    private String Level_1_Message_Part3 = "Okay, bereit? Wähle jetzt zuerst die Gegenstände mit dem höchsten Wert pro Gewicht aus";
     private String Level_2_Message = "Okay, jetzt sollst du gem. dem Greedy-Algorithmus die Objekte mit der besten " +
     "Wertigkeit auswählen, bis der Rucksack voll ist. Fange mit dem wertvollsten Objekt an, gefolgt von dem" + 
     " zweitwertvollsten etc.\n\n" + "In der folgenden Tabelle siehst du die Objekte mit ihren Werten und Gewichten. " +

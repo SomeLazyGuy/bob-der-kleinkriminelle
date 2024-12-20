@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour {
 
     private void Start() {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-        maxWeightText.text = "Max weight: " + maxWeight;
+        maxWeightText.text = maxWeight.ToString();
         inventoryManager.Initialize();
         inventoryManager.gameObject.SetActive(false);
     }
@@ -64,8 +64,8 @@ public class GameController : MonoBehaviour {
             itemEntity.transform.localScale = Vector3.one;
         }
         
-        weightText.text = "Weight: " + _currentWeight;
-        valueText.text = "Value: " + _currentValue;
+        weightText.text = _currentWeight.ToString();
+        valueText.text = _currentValue.ToString();
     }
 
     private IEnumerator ShowTooHeavyText() {
@@ -120,10 +120,10 @@ public class GameController : MonoBehaviour {
         itemEntity.transform.localScale *= 100f / oldItemWeight * remainingWeight / 100f;
         
         _currentWeight += pickupWeight;
-        weightText.text = "Weight: " + _currentWeight;
+        weightText.text = _currentWeight.ToString();
         
         _currentValue += pickupValue;
-        valueText.text = "Value: " + _currentValue;
+        valueText.text = _currentValue.ToString();
         
         return true;
     }
@@ -142,10 +142,10 @@ public class GameController : MonoBehaviour {
         itemEntity.PickupItem();
 
         _currentWeight += itemEntity.GetWeight();
-        weightText.text = "Weight: " + _currentWeight;
+        weightText.text = _currentWeight.ToString();
 
         _currentValue += itemEntity.GetValue();
-        valueText.text = "Value: " + _currentValue;
+        valueText.text = _currentValue.ToString();
 
         return true;
     }

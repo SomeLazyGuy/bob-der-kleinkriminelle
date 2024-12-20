@@ -12,6 +12,7 @@ using System.Data.Common;
 public class TutorialManager : MonoBehaviour{
     //public GameObject tutorialCanvas;
     //public Button tutorialCloseButton;
+    [SerializeField] private PlayerController player;
     [SerializeField] private GameObject tutorialCanvas;
     [SerializeField] private GameObject quizPrefab;
     [SerializeField] private String quizQuestion;
@@ -28,8 +29,6 @@ public class TutorialManager : MonoBehaviour{
     [SerializeField] private Button answerButton3;
     [SerializeField] private int correctAnswerIndex = 2;    // TODO: TESTING
 
-
-
     public Button nextButton;
     public TextMeshProUGUI tutorialText;
     private int contentPage;
@@ -42,31 +41,32 @@ public class TutorialManager : MonoBehaviour{
         }else{
             Debug.LogError("NextButton is null");
         }
-
+        
         SetTutorialContent();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void Update() {
+        // nicht ideal, aber passt schon
+        player.DisableMovement();
     }
 
     public void ChallengeFinished(){
         isFinished = true;
         nextButton.interactable = true;
-    }
-
-    public void CloseTable(){
-        tutorialCanvas.SetActive(false);
-    }
+    } 
+    
     private void OnNextButtonClicked(){
         Debug.Log($"Next Button Clicked. Incrementing content page from {contentPage} to {contentPage+1}.");
         contentPage++;
         SetTutorialContent();        
     }
 
-    public void SetTutorialContent(){
+    private void CloseTutorialCanvas() {
+        tutorialCanvas.SetActive(false);
+        player.EnableMovement();
+    }
+
+    private void SetTutorialContent(){
         Scene currentScene = SceneManager.GetActiveScene();
         Debug.Log($"[SetTutorialText] Current Scene is: {currentScene.name}");       
         switch(currentScene.name){
@@ -94,7 +94,7 @@ public class TutorialManager : MonoBehaviour{
                         StartCoroutine(AnimateText(Level_1_Message_Part3, 0.05f));    // TODO: Adjust speed after testing phase
                         break;
                     case 5:
-                        tutorialCanvas.SetActive(false);
+                        CloseTutorialCanvas();
                         break;
                     default:
                         Debug.LogError($"Unknown content page: {contentPage}");
@@ -128,7 +128,7 @@ public class TutorialManager : MonoBehaviour{
                         InstantiateQuiz(quizPrefab);
                         break;
                     case 4:
-                        tutorialCanvas.SetActive(false);
+                        CloseTutorialCanvas();
                         break;
                     default:
                         Debug.LogError($"Unknown content page: {contentPage}");
@@ -143,7 +143,7 @@ public class TutorialManager : MonoBehaviour{
                         InstantiateTable(tablePrefab);
                         break;
                     case 1:
-                        tutorialCanvas.SetActive(false);
+                        CloseTutorialCanvas();
                         break;
                 }
                 break;

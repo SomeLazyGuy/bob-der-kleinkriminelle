@@ -1918,6 +1918,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1713452605462670325, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 7766486286359287127}
+    - target: {fileID: 1713452605462670325, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
       propertyPath: quizPrefab
       value: 
       objectReference: {fileID: 6091523481559154467, guid: fef97bd53e2be104d9f7c084cfd4eb12, type: 3}
@@ -3257,7 +3261,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2061675073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3746,6 +3750,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a16c9237c174bf940a71fd2c708b29b9, type: 3}
+--- !u!114 &7766486286359287127 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 194773872617617185, guid: a16c9237c174bf940a71fd2c708b29b9, type: 3}
+  m_PrefabInstance: {fileID: 7766486286359287126}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1775e93a61209ba448df92b523799971, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

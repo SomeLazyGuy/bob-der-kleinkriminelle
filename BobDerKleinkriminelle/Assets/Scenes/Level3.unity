@@ -1000,6 +1000,10 @@ PrefabInstance:
       value: DialogCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 1713452605462670325, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 7766486286359287127}
+    - target: {fileID: 1713452605462670325, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
       propertyPath: tablePrefab
       value: 
       objectReference: {fileID: 8290502521165535344, guid: 23c5e1c5acbf845d4982b037a0ba7040, type: 3}
@@ -2254,6 +2258,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a16c9237c174bf940a71fd2c708b29b9, type: 3}
+--- !u!114 &7766486286359287127 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 194773872617617185, guid: a16c9237c174bf940a71fd2c708b29b9, type: 3}
+  m_PrefabInstance: {fileID: 7766486286359287126}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1775e93a61209ba448df92b523799971, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

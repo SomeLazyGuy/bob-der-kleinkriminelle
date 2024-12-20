@@ -28,7 +28,12 @@ public class GameController : MonoBehaviour {
         // toggle inventory
         if (Input.GetKeyDown(KeyCode.Q)) {
             inventoryManager.gameObject.SetActive(!inventoryManager.gameObject.activeSelf);
-            player.canMove = !inventoryManager.gameObject.activeSelf;
+
+            if (inventoryManager.gameObject.activeSelf) {
+                player.DisableMovement();
+            } else {
+                player.EnableMovement();
+            }
         }
     }
 

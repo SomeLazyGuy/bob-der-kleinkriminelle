@@ -32,11 +32,12 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Update() {
-        _moveDirection = _controls.Player.Move.ReadValue<Vector2>();
-        
-        animator.SetFloat("Horizontal", _moveDirection.x);
-        animator.SetFloat("Vertical", _moveDirection.y);
-        animator.SetFloat("Speed", _moveDirection.sqrMagnitude);
+        if (canMove) {
+            _moveDirection = _controls.Player.Move.ReadValue<Vector2>();
+            animator.SetFloat("Horizontal", _moveDirection.x);
+            animator.SetFloat("Vertical", _moveDirection.y);
+            animator.SetFloat("Speed", _moveDirection.sqrMagnitude);    
+        }
         
         if ((int)_controls.Player.Interact.ReadValue<float>() == 1) {
             if (!_canPickupItem) return;
@@ -50,16 +51,21 @@ public class PlayerController : MonoBehaviour {
 
     private void FixedUpdate() {
         if (_isInLevelTransition) {
-            _rigidbody2D.velocity = _transitionDirection * moveSpeed;
+            animator.SetFloat("Horizontal", 0);
+            animator.SetFloat("Vertical", _transitionDirection.y);
+            animator.SetFloat("Speed", _transitionDirection.sqrMagnitude);  
 
+            _rigidbody2D.velocity = _transitionDirection * moveSpeed;
+            
             if (transform.position.y is > -7 and < 0) {
                 _isInLevelTransition = false;
                 canMove = true;
             }
         }
-        
-        if (!canMove) return;
-        _rigidbody2D.velocity = _moveDirection * moveSpeed;
+
+        if (canMove) {
+            _rigidbody2D.velocity = _moveDirection * moveSpeed;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -84,5 +90,18 @@ public class PlayerController : MonoBehaviour {
         _transitionDirection = direction;
         canMove = false;
         _isInLevelTransition = true;
+    }
+
+    public void EnableMovement() {
+        canMove = true;
+    }
+    
+    public void DisableMovement() {
+        canMove = false;
+        _moveDirection = Vector2.zero;
+        _rigidbody2D.velocity = Vector2.zero;
+        animator.SetFloat("Horizontal", _moveDirection.x);
+        animator.SetFloat("Vertical", _moveDirection.y);
+        animator.SetFloat("Speed", _moveDirection.sqrMagnitude);
     }
 }

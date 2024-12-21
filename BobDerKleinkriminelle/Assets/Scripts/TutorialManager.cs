@@ -81,48 +81,22 @@ public class TutorialManager : MonoBehaviour{
                 switch(contentPage){
                     case 0:
                         PlayAudioClip(audioClip1);
-                        StartCoroutine(AnimateText(Level_1_Message_Part1, 0.00000075f));    // TODO: Adjust speed after testing phase
+                        StartCoroutine(AnimateText(Level_1_Message_Part1, 0.05f));
                         break;
                     case 1:
                         StopAudioSource();
-                        StartCoroutine(AnimateText(Level_1_Message_Part2, 0.00000075f));    // TODO: Adjust speed after testing phase
-                        break;
-                    case 2:
                         ClearText();
                         nextButton.interactable = false;
                         InstantiateTable(tablePrefab);
+                        PlayAudioClip(audioClip6);
                         break;
-                    case 3:
+                    case 2:
                         // "Okay, bereit? Wähle zuerst die Gegenstände mit dem höchsten Wert pro Gewicht aus";
                         ClearGameObject(tablePrefab);
                         PlayAudioClip(audioClip2); 
-                        StartCoroutine(AnimateText(Level_1_Message_Part3, 0.05f));    // TODO: Adjust speed after testing phase
+                        StartCoroutine(AnimateText(Level_1_Message_Part3, 0.05f));
                         break;
-                    case 4:
-                        // "Welchen Gegenstand packst du zuerst ein?"
-                        StopAudioSource();
-                        nextButton.interactable = false;
-                        ClearGameObject(tablePrefab);
-                        InstantiateQuiz(quizPrefab);
-                        PlayAudioClip(audioClip3);
-                        break;
-                    case 5:
-                        // "Welchen Gegenstand nimmst du als nächstes auf?"
-                        StopAudioSource();
-                        ClearGameObject(quizPrefab);  
-                        quizQuestion = "Welche Gegenstand nehmen wir als nächstes?";
-                        quizAnswer0 = "Geld";
-                        quizAnswer1 = "Schmuck";
-                        quizAnswer2 = "Goldmünzen"; // <- Correct Answer
-                        quizAnswer3 = "Edelsteine";
-                        correctAnswerIndex = 2;
-                        InstantiateQuiz(quizPrefab);
-                        ClearText();
-                        PlayAudioClip(audioClip4);
-                        break;
-                    case 6:
-                        // Wie viele Anteile kannst du vom letzten Gegenstand einpacken? 
-                    case 7:
+                    case 3:
                         CloseTutorialCanvas();
                         break;
                     default:
@@ -133,16 +107,21 @@ public class TutorialManager : MonoBehaviour{
             case "Level2":
                 switch(contentPage){
                     case 0:
-                        StartCoroutine(AnimateText(Level_2_Message_Part1, 0.00000075f));    // TODO: Adjust speed after testing phase
+                        PlayAudioClip(audioClip1);
+                        StartCoroutine(AnimateText(Level_2_Message_Part1, 0.05f));
                         break;
                     case 1:
+                        // "Jetzt fehlen nur noch die Wertigkeiten von unseren Keksen und von unserem Schmuck."
                         ClearText();
                         nextButton.interactable = false;
                         InstantiateTable(tablePrefab);
+                        PlayAudioClip(audioClip2);
                         break;
                     case 2:
+                        // "Was packst du zuerst ein?"
                         nextButton.interactable = false;
                         ClearGameObject(tablePrefab);
+                        PlayAudioClip(audioClip3);
                         InstantiateQuiz(quizPrefab);
                         break;
                     case 3:
@@ -155,8 +134,21 @@ public class TutorialManager : MonoBehaviour{
                         quizAnswer3 = "Edelsteine";
                         correctAnswerIndex = 2;
                         InstantiateQuiz(quizPrefab);
+                        PlayAudioClip(audioClip4);
                         break;
                     case 4:
+                        nextButton.interactable = false;
+                        ClearGameObject(quizPrefab);
+                        quizQuestion = "Wie viele Anteile kannst du vom letzten Gegenstand einpacken?";
+                        quizAnswer0 = "1/2 (TODO)";
+                        quizAnswer1 = "1/3 (TODO)";
+                        quizAnswer2 = "1/4 (TODO)";
+                        quizAnswer3 = "TODO"; // <- Correct Answer
+                        correctAnswerIndex = 3;
+                        InstantiateQuiz(quizPrefab);
+                        PlayAudioClip(audioClip5);  
+                        break;
+                    case 5:
                         CloseTutorialCanvas();
                         break;
                     default:
@@ -362,11 +354,16 @@ public class TutorialManager : MonoBehaviour{
     "1/2 statt 0.5.";
 
     private String Level_1_Message_Part3 = "Okay, bereit? Wähle zuerst die Gegenstände mit dem höchsten Wert pro Gewicht aus";
-    private String Level_2_Message = "Okay, jetzt sollst du gem. dem Greedy-Algorithmus die Objekte mit der besten " +
+    
+    /*private String Level_2_Message = "Okay, jetzt sollst du gem. dem Greedy-Algorithmus die Objekte mit der besten " +
     "Wertigkeit auswählen, bis der Rucksack voll ist. Fange mit dem wertvollsten Objekt an, gefolgt von dem" + 
     " zweitwertvollsten etc.\n\n" + "In der folgenden Tabelle siehst du die Objekte mit ihren Werten und Gewichten. " +
-    "Die Wertigkeit kannst du einfach berechnen, indem du den Wert durch das Gewicht teilst.";
-    private String Level_2_Message_Part1 = "Okay, jetzt haben die Goldmünzen eine  Wertigkeit von 2 ,die Edelsteine von 2/3 " +
+    "Die Wertigkeit kannst du einfach berechnen, indem du den Wert durch das Gewicht teilst.";*/
+
+    private String Level_2_Message_Part1 = "Du weißt, was du machen sollst, wenn du Gegenstände nicht vorher mitnehmen musst. Oft "+
+    "ist es aber nicht möglich, Objekte zu teilen. Das nennt man 0/1-Problem, also entweder nehmen oder nicht nehmen.  " +
+    "Daran müssen wir etwas rangehen, um die global beste Lösung zu erzielen. Versuche es aber erstmal selber.";
+    private String Level_2_Message_Part2 = "Okay, jetzt haben die Goldmünzen eine  Wertigkeit von 2 ,die Edelsteine von 2/3 " +
     "und das Geld hat eine Wertigkeit von 1/6. Jetzt fehlen nur noch die Wertigkeiten von unseren Keksen und von unserem Schmuck."+
     "\n\nTrage sie in der folgenden Tabelle ein.\n\nTipp für Kleinkriminelle: Notiere dir auf einem Zettel die Wertigkeiten der "+
     "Gegenstände, beor du die Tabelle schließt.";

@@ -164,7 +164,6 @@ public class TutorialManager : MonoBehaviour{
                         InstantiateTable(tablePrefab);
                         break;
                     case 1:
-                        // "Was packst du zuerst ein?"
                         nextButton.interactable = false;
                         ClearGameObject(tablePrefab);
                         quizQuestion = "Welche Gegenstand packst du zuerst ein?";
@@ -190,16 +189,27 @@ public class TutorialManager : MonoBehaviour{
                     case 3:
                         nextButton.interactable = false;
                         ClearGameObject(quizPrefab);
-                        quizQuestion = "Welchen Gegenstand packst du zuletzt ein?";
+                        quizQuestion = "Welchen Gegenstand packst du danach ein?";
                         quizAnswer0 = "Geld";
                         quizAnswer1 = "Goldmünzen";
                         quizAnswer2 = "Keinen";
-                        quizAnswer3 = "Schmuck"; // <- Correct Answer
+                        quizAnswer3 = "Silbernuggets"; // <- Correct Answer
                         correctAnswerIndex = 3;
                         InstantiateQuiz(quizPrefab);
                         PlayAudioClip(audioClip5);  
                         break;                      
                     case 4:
+                        nextButton.interactable = false;
+                        ClearGameObject(quizPrefab);
+                        quizQuestion = "Wie viel kannst du vom Schmuck mitnehmen?";
+                        quizAnswer0 = "1/2";
+                        quizAnswer1 = "1/3";
+                        quizAnswer2 = "1/4";
+                        quizAnswer3 = "1/5";
+                        correctAnswerIndex = 0;
+                        InstantiateQuiz(quizPrefab);
+                        break;
+                    case 5:
                         CloseTutorialCanvas();
                         break;
                 }

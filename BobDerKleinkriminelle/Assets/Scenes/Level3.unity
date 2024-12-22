@@ -830,6 +830,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7766486286359287127}
     - target: {fileID: 1713452605462670325, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
+      propertyPath: quizPrefab
+      value: 
+      objectReference: {fileID: 6091523481559154467, guid: fef97bd53e2be104d9f7c084cfd4eb12, type: 3}
+    - target: {fileID: 1713452605462670325, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
       propertyPath: tablePrefab
       value: 
       objectReference: {fileID: 8290502521165535344, guid: 23c5e1c5acbf845d4982b037a0ba7040, type: 3}

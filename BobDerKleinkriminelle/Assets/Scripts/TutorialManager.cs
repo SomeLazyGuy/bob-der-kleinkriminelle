@@ -140,10 +140,10 @@ public class TutorialManager : MonoBehaviour{
                         nextButton.interactable = false;
                         ClearGameObject(quizPrefab);
                         quizQuestion = "Wie viele Anteile kannst du vom letzten Gegenstand einpacken?";
-                        quizAnswer0 = "1/2 (TODO)";
-                        quizAnswer1 = "1/3 (TODO)";
-                        quizAnswer2 = "1/4 (TODO)";
-                        quizAnswer3 = "TODO"; // <- Correct Answer
+                        quizAnswer0 = "1/7";
+                        quizAnswer1 = "2/7";
+                        quizAnswer2 = "3/7";
+                        quizAnswer3 = "4/7"; // <- Correct Answer
                         correctAnswerIndex = 3;
                         InstantiateQuiz(quizPrefab);
                         PlayAudioClip(audioClip5);  
@@ -164,6 +164,42 @@ public class TutorialManager : MonoBehaviour{
                         InstantiateTable(tablePrefab);
                         break;
                     case 1:
+                        // "Was packst du zuerst ein?"
+                        nextButton.interactable = false;
+                        ClearGameObject(tablePrefab);
+                        quizQuestion = "Welche Gegenstand packst du zuerst ein?";
+                        quizAnswer0 = "Geld";
+                        quizAnswer1 = "Schmuck";
+                        quizAnswer2 = "Kekse"; // <- Correct Answer
+                        quizAnswer3 = "Edelsteine";
+                        correctAnswerIndex = 2;
+                        InstantiateQuiz(quizPrefab);
+                        break;
+                    case 2:
+                        nextButton.interactable = false;
+                        ClearGameObject(quizPrefab);    
+                        quizQuestion = "Welche Gegenstand nehmen wir als nächstes?";
+                        quizAnswer0 = "Goldmünzen"; // <- Correct Answer
+                        quizAnswer1 = "Schmuck";
+                        quizAnswer2 = "Geld"; 
+                        quizAnswer3 = "Edelsteine";
+                        correctAnswerIndex = 0;
+                        InstantiateQuiz(quizPrefab);
+                        PlayAudioClip(audioClip4);
+                        break;
+                    case 3:
+                        nextButton.interactable = false;
+                        ClearGameObject(quizPrefab);
+                        quizQuestion = "Welchen Gegenstand packst du zuletzt ein?";
+                        quizAnswer0 = "Geld";
+                        quizAnswer1 = "Goldmünzen";
+                        quizAnswer2 = "Keinen";
+                        quizAnswer3 = "Schmuck"; // <- Correct Answer
+                        correctAnswerIndex = 3;
+                        InstantiateQuiz(quizPrefab);
+                        PlayAudioClip(audioClip5);  
+                        break;                      
+                    case 4:
                         CloseTutorialCanvas();
                         break;
                 }

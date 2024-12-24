@@ -12,6 +12,8 @@ public class GameController : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI inventoryFullText;
     [SerializeField] private int maxWeight;
     [SerializeField] private bool isGreedy;
+    [SerializeField] private int targetValue;
+    private bool doorLocked = true;
 
     private PlayerController player;
     private int _currentWeight = 0;
@@ -140,6 +142,7 @@ public class GameController : MonoBehaviour {
         }
         
         itemEntity.PickupItem();
+        CheckCompleted();
 
         _currentWeight += itemEntity.GetWeight();
         weightText.text = _currentWeight.ToString();
@@ -148,5 +151,13 @@ public class GameController : MonoBehaviour {
         valueText.text = _currentValue.ToString();
 
         return true;
+    }
+
+    private void CheckCompleted() {
+        if (_currentValue >= targetValue && doorLocked) {
+            doorLocked = false;
+            // jetzt noch visuell die tür öffnen
+            Debug.Log("Door unlocked");
+        }
     }
 }

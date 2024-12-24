@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour {
     [SerializeField] private int maxWeight;
     [SerializeField] private bool isGreedy;
     [SerializeField] private int targetValue;
+    [SerializeField] private GameObject blockingObject;
     private bool doorLocked = true;
 
     private PlayerController player;
@@ -126,6 +127,8 @@ public class GameController : MonoBehaviour {
         
         _currentValue += pickupValue;
         valueText.text = _currentValue.ToString();
+
+        CheckCompleted();
         
         return true;
     }
@@ -142,7 +145,6 @@ public class GameController : MonoBehaviour {
         }
         
         itemEntity.PickupItem();
-        CheckCompleted();
 
         _currentWeight += itemEntity.GetWeight();
         weightText.text = _currentWeight.ToString();
@@ -150,13 +152,15 @@ public class GameController : MonoBehaviour {
         _currentValue += itemEntity.GetValue();
         valueText.text = _currentValue.ToString();
 
+        CheckCompleted();
         return true;
     }
 
     private void CheckCompleted() {
+        Debug.Log($"CheckCompleted was called. Current: {_currentValue},target: {targetValue}");
         if (_currentValue >= targetValue && doorLocked) {
             doorLocked = false;
-            // jetzt noch visuell die tür öffnen
+            blockingObject.SetActive(false);
             Debug.Log("Door unlocked");
         }
     }

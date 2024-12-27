@@ -81,7 +81,8 @@ public class TutorialManager : MonoBehaviour{
                 switch(contentPage){
                     case 0:
                         PlayAudioClip(audioClip1);
-                        StartCoroutine(AnimateText(Level_1_Message_Part1, 0.05f));
+                        PerformOnElapsedTime(5000);
+                        StartCoroutine(AnimateText(Level_1_Message_Part1, 0.025f));
                         break;
                     case 1:
                         StopAudioSource();
@@ -223,6 +224,7 @@ public class TutorialManager : MonoBehaviour{
                     case 0:
                         nextButton.interactable = false;
                         InstantiateTable(tablePrefab);
+                        PlayAudioClip(audioClip1);
                     break;
                     case 1:
                         nextButton.interactable = false;
@@ -252,7 +254,7 @@ public class TutorialManager : MonoBehaviour{
             if(letter == ' ' || letter == '\n'){
                 continue;
             }
-            yield return new WaitForSeconds(delay);
+            yield return new WaitForSecondsRealtime(delay);
         }
         nextButton.interactable = true;
     }
@@ -358,8 +360,33 @@ public class TutorialManager : MonoBehaviour{
         if (audioSource != null && audioClip != null) {
             audioSource.clip = audioClip;
             audioSource.Play();
+            StartCoroutine(LogElapsedTime());
         } else {
             Debug.LogError("AudioSource or AudioClip is not assigned.");
+        }
+    }
+
+    private IEnumerator LogElapsedTime() {
+        while (audioSource.isPlaying) {
+            Debug.Log($"Elapsed time: {audioSource.time * 1000} ms");
+            yield return new WaitForSeconds(0.05f); // refresh alle 50ms
+        }
+    }
+
+    private void PerformOnElapsedTime(int ms) {
+        if (audioSource != null) {
+            StartCoroutine(PerformActionAfterElapsedTime(ms));
+        }
+    }
+
+    private IEnumerator PerformActionAfterElapsedTime(int ms) {
+        while (audioSource.isPlaying) {
+            if (audioSource.time * 1000 >= ms) {
+                Debug.Log($"Action called at {audioSource.time * 1000} ms, target: {ms} ms");
+                // hier werden tabellenzellen hervorgehoben
+                yield break;
+            }
+            yield return null;
         }
     }
 

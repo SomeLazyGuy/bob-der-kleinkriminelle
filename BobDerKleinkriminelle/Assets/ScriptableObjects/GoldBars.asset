@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GoldBars
   m_EditorClassIdentifier: 
   itemName: Goldbarren
-  value: 20
-  weight: 12
+  value: 8
+  weight: 4

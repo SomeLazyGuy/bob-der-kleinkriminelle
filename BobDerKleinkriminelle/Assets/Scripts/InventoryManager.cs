@@ -28,15 +28,29 @@ public class InventoryManager : MonoBehaviour {
         
         _itemSlots[_firstFreeSlot].SetItem(itemEntity, weight, value);
         _itemSlots[_firstFreeSlot].gameObject.SetActive(true);
-        _firstFreeSlot++;
+
+        _firstFreeSlot = FindFirstFreeSlot();
         
         return true;
     }
 
     private void DropItem(int index) {
+        Debug.LogError(index);
+        
         gameController.DropItem(_itemSlots[index].itemEntity);
         _itemSlots[index].RemoveItem();
         _itemSlots[index].gameObject.SetActive(false);
-        _firstFreeSlot--;
+
+        _firstFreeSlot = FindFirstFreeSlot();
+    }
+
+    private int FindFirstFreeSlot() {
+        for (int i = 0; i < _itemSlots.Length; i++) {
+            if (_itemSlots[i].itemEntity == null) {
+                return i;
+            }
+        }
+
+        return _itemSlots.Length;
     }
 }

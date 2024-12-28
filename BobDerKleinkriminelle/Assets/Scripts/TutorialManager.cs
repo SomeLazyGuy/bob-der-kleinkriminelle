@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
+using System.ComponentModel;
 using static Table;
 using System.Linq;
 using System.Data.Common;
@@ -81,7 +82,6 @@ public class TutorialManager : MonoBehaviour{
                 switch(contentPage){
                     case 0:
                         PlayAudioClip(audioClip1);
-                        PerformOnElapsedTime(5000);
                         StartCoroutine(AnimateText(Level_1_Message_Part1, 0.025f));
                         break;
                     case 1:
@@ -374,17 +374,17 @@ public class TutorialManager : MonoBehaviour{
         }
     }
 
-    private void PerformOnElapsedTime(int ms) {
+    public void PerformOnElapsedTime<T>(Func<T> func, int seconds) {
         if (audioSource != null) {
-            StartCoroutine(PerformActionAfterElapsedTime(ms));
+            StartCoroutine(PerformActionAfterElapsedTime(func, seconds));
         }
     }
 
-    private IEnumerator PerformActionAfterElapsedTime(int ms) {
+    private IEnumerator PerformActionAfterElapsedTime<T>(Func<T> func, int seconds) {
         while (audioSource.isPlaying) {
-            if (audioSource.time * 1000 >= ms) {
-                Debug.Log($"Action called at {audioSource.time * 1000} ms, target: {ms} ms");
-                // hier werden tabellenzellen hervorgehoben
+            if (audioSource.time >= seconds) {
+                Debug.Log($"Action called at {audioSource.time} ms, target: {seconds} ms");
+                func();
                 yield break;
             }
             yield return null;

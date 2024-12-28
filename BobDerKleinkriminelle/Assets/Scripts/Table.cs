@@ -10,19 +10,13 @@ public class Table : MonoBehaviour {
 
     [HideInInspector] public TutorialManager tutorialManager;
     
-    private bool _finished = false;
     private int _solvedCount = 0;
-    
-    private void Update() {
-        if (_finished) return;
 
+    public virtual void SolvedCell() {
+        _solvedCount++;
+        
         if (missingCount == _solvedCount) {
-            _finished = true;
             tutorialManager.ChallengeFinished();
         }
-    }
-
-    public void SolvedCell() {
-        _solvedCount++;
     }
 }

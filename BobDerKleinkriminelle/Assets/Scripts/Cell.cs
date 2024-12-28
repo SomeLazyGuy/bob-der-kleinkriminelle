@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Cell : MonoBehaviour {
-    [SerializeField] private bool needsToBeClicked = true;
+    public bool needsToBeClicked = true;
     [SerializeField] private bool needsToBeFilled = true;
     [SerializeField] private String correctValue;
     

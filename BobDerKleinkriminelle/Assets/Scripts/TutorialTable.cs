@@ -39,7 +39,7 @@ public class TutorialTable : MonoBehaviour {
 
     private IEnumerator HighlightCells(Image[] cells, int time) {
         foreach (var cell in cells) {
-            cell.color = Color.green;
+            cell.color = new Color32(255, 209, 57, 255);
         }
 
         yield return new WaitForSeconds(time);

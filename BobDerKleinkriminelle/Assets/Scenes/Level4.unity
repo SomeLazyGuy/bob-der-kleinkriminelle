@@ -751,6 +751,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa6aec56a06d2324b8b6ce4b8b3dd84c, type: 3}
+--- !u!1 &895371119 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 808667871389888180, guid: fa6aec56a06d2324b8b6ce4b8b3dd84c, type: 3}
+  m_PrefabInstance: {fileID: 895371118}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1042045936
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1095,7 +1100,7 @@ MonoBehaviour:
   maxWeight: 10
   isGreedy: 0
   targetValue: 0
-  blockingObject: {fileID: 0}
+  blockingObject: {fileID: 895371119}
 --- !u!1 &1502328268
 GameObject:
   m_ObjectHideFlags: 0

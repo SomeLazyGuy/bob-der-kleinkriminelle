@@ -218,6 +218,7 @@ public class TutorialManager : MonoBehaviour{
             case "Level4":
                 ClearText();
                 InstantiateTable(tablePrefab);
+                PlayAudioClip(audioClip1);
                 break;
             case "Level5":
                 switch(contentPage){

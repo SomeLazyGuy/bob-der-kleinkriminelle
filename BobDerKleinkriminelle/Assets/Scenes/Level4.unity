@@ -1437,6 +1437,10 @@ PrefabInstance:
       value: DialogCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 1713452605462670325, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
+      propertyPath: audioClip1
+      value: 
+      objectReference: {fileID: 8300000, guid: d17bd2af183d6c04a87b0cdf753c6817, type: 3}
+    - target: {fileID: 1713452605462670325, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
       propertyPath: tablePrefab
       value: 
       objectReference: {fileID: 8229472459155523413, guid: cd33406970263484bb0eb397ed4de715, type: 3}

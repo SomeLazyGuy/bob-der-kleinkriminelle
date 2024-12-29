@@ -224,6 +224,10 @@ public class TutorialManager : MonoBehaviour{
                         InstantiateTable(tablePrefab);
                         PlayAudioClip(audioClip2);
                         break;
+                    case 2:
+                        CloseTutorialCanvas();
+                        StopAudioSource();
+                        break;
                     default:
                         Debug.LogError($"Unknown content page: {contentPage}");
                         break;
@@ -248,7 +252,36 @@ public class TutorialManager : MonoBehaviour{
                         Debug.LogError($"Unknown content page: {contentPage}");
                     break;
                 }    
-            break;
+                break;
+            case "Level6":
+                StartCoroutine(AnimateText("TODO", 0.01f)); // TODO
+                break;
+            case "Level7":
+                switch(contentPage){
+                    case 0:
+                        nextButton.interactable = false;
+                        quizQuestion = Level_7_Message_1;
+                        quizAnswer0 = "Ja";
+                        quizAnswer1 = "Nein";
+                        quizAnswer2 = "Vielleicht";
+                        quizAnswer3 = "Es gibt keine";
+                        correctAnswerIndex = 1;
+                        PlayAudioClip(audioClip1);
+                        InstantiateQuiz(quizPrefab);
+                        break;
+                    case 1:
+                        ClearGameObject(quizPrefab);
+                        StartCoroutine(AnimateText(Level_7_Message_2, 0.01f));
+                        PlayAudioClip(audioClip2);
+                        break;
+                    case 2:
+                        CloseTutorialCanvas();
+                        break;
+                    default:
+                        Debug.LogError($"Unknown content page: {contentPage}");
+                        break;
+                }
+                break;
             default:
                 Debug.LogError($"Unknown scene: {currentScene.name}");
             break;
@@ -442,4 +475,11 @@ public class TutorialManager : MonoBehaviour{
     "und das Geld hat eine Wertigkeit von 1/6. Jetzt fehlen nur noch die Wertigkeiten von unseren Keksen und von unserem Schmuck."+
     "\n\nTrage sie in der folgenden Tabelle ein.\n\nTipp für Kleinkriminelle: Notiere dir auf einem Zettel die Wertigkeiten der "+
     "Gegenstände, beor du die Tabelle schließt.";
+
+    String Level_6_Message = "Versuche selber die Tabelle für diese Bank auszufüllen und entscheide, welche Gegenstände " 
+    +"dementsprechend geklaut werden müssen. Viel Glück!";
+
+    String Level_7_Message_1 = "Hmmm..... denkst du, du kannst hier einen Gegenstand mitnehmen?";
+    String Level_7_Message_2 = "Es gibt Situationen, wo wir trotz Algorithmus keine Lösung für unser Rucksackproblem "
+    + "finden. Wie es scheint, sind hier alle Gegenstände zu schwer für dich. Geh lieber direkt ins nächste Level ";
 }

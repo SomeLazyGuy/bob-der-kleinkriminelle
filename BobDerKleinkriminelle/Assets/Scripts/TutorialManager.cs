@@ -9,6 +9,7 @@ using System.ComponentModel;
 using static Table;
 using System.Linq;
 using System.Data.Common;
+using Unity.VisualScripting;
 
 public class TutorialManager : MonoBehaviour{
     //public GameObject tutorialCanvas;
@@ -54,8 +55,7 @@ public class TutorialManager : MonoBehaviour{
     }
 
     private void Update() {
-        // nicht ideal, aber passt schon
-        player.DisableMovement();
+        if(player != null){ player.DisableMovement(); } // nicht ideal, aber passt schon
     }
 
     public void ChallengeFinished(){
@@ -108,24 +108,20 @@ public class TutorialManager : MonoBehaviour{
             case "Level2":
                 switch(contentPage){
                     case 0:
-                        PlayAudioClip(audioClip1);
-                        StartCoroutine(AnimateText(Level_2_Message_Part1, 0.05f));
-                        break;
-                    case 1:
                         // "Jetzt fehlen nur noch die Wertigkeiten von unseren Keksen und von unserem Schmuck."
                         ClearText();
                         nextButton.interactable = false;
                         InstantiateTable(tablePrefab);
                         PlayAudioClip(audioClip2);
                         break;
-                    case 2:
+                    case 1:
                         // "Was packst du zuerst ein?"
                         nextButton.interactable = false;
                         ClearGameObject(tablePrefab);
                         PlayAudioClip(audioClip3);
                         InstantiateQuiz(quizPrefab);
                         break;
-                    case 3:
+                    case 2:
                         nextButton.interactable = false;
                         ClearGameObject(quizPrefab);    
                         quizQuestion = "Welche Gegenstand nehmen wir als nächstes?";
@@ -137,7 +133,7 @@ public class TutorialManager : MonoBehaviour{
                         InstantiateQuiz(quizPrefab);
                         PlayAudioClip(audioClip4);
                         break;
-                    case 4:
+                    case 3:
                         nextButton.interactable = false;
                         ClearGameObject(quizPrefab);
                         quizQuestion = "Wie viele Anteile kannst du vom letzten Gegenstand einpacken?";
@@ -149,7 +145,7 @@ public class TutorialManager : MonoBehaviour{
                         InstantiateQuiz(quizPrefab);
                         PlayAudioClip(audioClip5);  
                         break;
-                    case 5:
+                    case 4:
                         CloseTutorialCanvas();
                         break;
                     default:
@@ -163,6 +159,7 @@ public class TutorialManager : MonoBehaviour{
                         ClearText();
                         nextButton.interactable = false;
                         InstantiateTable(tablePrefab);
+                        PlayAudioClip(audioClip1);
                         break;
                     case 1:
                         nextButton.interactable = false;
@@ -212,13 +209,25 @@ public class TutorialManager : MonoBehaviour{
                         break;
                     case 5:
                         CloseTutorialCanvas();
+                        PlayAudioClip(audioClip2);
                         break;
                 }
                 break;
             case "Level4":
-                ClearText();
-                InstantiateTable(tablePrefab);
-                PlayAudioClip(audioClip1);
+                switch(contentPage){
+                    case 0:
+                        PlayAudioClip(audioClip1);
+                        StartCoroutine(AnimateText(Level_4_Message, 0.01f));
+                        break;
+                    case 1:
+                        ClearText();
+                        InstantiateTable(tablePrefab);
+                        PlayAudioClip(audioClip2);
+                        break;
+                    default:
+                        Debug.LogError($"Unknown content page: {contentPage}");
+                        break;
+                }
                 break;
             case "Level5":
                 switch(contentPage){
@@ -361,16 +370,8 @@ public class TutorialManager : MonoBehaviour{
         if (audioSource != null && audioClip != null) {
             audioSource.clip = audioClip;
             audioSource.Play();
-            StartCoroutine(LogElapsedTime());
         } else {
             Debug.LogError("AudioSource or AudioClip is not assigned.");
-        }
-    }
-
-    private IEnumerator LogElapsedTime() {
-        while (audioSource.isPlaying) {
-            Debug.Log($"Elapsed time: {audioSource.time * 1000} ms");
-            yield return new WaitForSeconds(0.05f); // refresh alle 50ms
         }
     }
 
@@ -434,9 +435,9 @@ public class TutorialManager : MonoBehaviour{
     " zweitwertvollsten etc.\n\n" + "In der folgenden Tabelle siehst du die Objekte mit ihren Werten und Gewichten. " +
     "Die Wertigkeit kannst du einfach berechnen, indem du den Wert durch das Gewicht teilst.";*/
 
-    private String Level_2_Message_Part1 = "Du weißt, was du machen sollst, wenn du Gegenstände nicht vorher mitnehmen musst. Oft "+
+    private String Level_4_Message = "Du weißt, was du machen sollst, wenn du Gegenstände nicht voll mitnehmen musst. Oft "+
     "ist es aber nicht möglich, Objekte zu teilen. Das nennt man 0/1-Problem, also entweder nehmen oder nicht nehmen.  " +
-    "Daran müssen wir etwas rangehen, um die global beste Lösung zu erzielen. Versuche es aber erstmal selber.";
+    "Daran muss man etwas anders rangehen, um die global beste Lösung zu erzielen. Versuche es aber erstmal selber.";
     private String Level_2_Message_Part2 = "Okay, jetzt haben die Goldmünzen eine  Wertigkeit von 2 ,die Edelsteine von 2/3 " +
     "und das Geld hat eine Wertigkeit von 1/6. Jetzt fehlen nur noch die Wertigkeiten von unseren Keksen und von unserem Schmuck."+
     "\n\nTrage sie in der folgenden Tabelle ein.\n\nTipp für Kleinkriminelle: Notiere dir auf einem Zettel die Wertigkeiten der "+

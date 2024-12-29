@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 4976857390643191428}
   - component: {fileID: 6852904723509144956}
   m_Layer: 0
-  m_Name: wrench
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

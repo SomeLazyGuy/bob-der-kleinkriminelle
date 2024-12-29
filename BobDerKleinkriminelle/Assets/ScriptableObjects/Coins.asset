@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Coins
   m_EditorClassIdentifier: 
   itemName: "M\xFCnzen"
-  value: 2
-  weight: 12
+  value: 8
+  weight: 4

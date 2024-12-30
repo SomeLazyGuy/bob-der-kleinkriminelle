@@ -169,18 +169,6 @@ PrefabInstance:
       value: TreasureChestZL
       objectReference: {fileID: 0}
     - target: {fileID: 4904635714719812008, guid: 0907f5bc57a39d1499ce556be61105d1, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.4667
-      objectReference: {fileID: 0}
-    - target: {fileID: 4904635714719812008, guid: 0907f5bc57a39d1499ce556be61105d1, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.4667
-      objectReference: {fileID: 0}
-    - target: {fileID: 4904635714719812008, guid: 0907f5bc57a39d1499ce556be61105d1, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.4667
-      objectReference: {fileID: 0}
-    - target: {fileID: 4904635714719812008, guid: 0907f5bc57a39d1499ce556be61105d1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.970444
       objectReference: {fileID: 0}
@@ -219,10 +207,6 @@ PrefabInstance:
     - target: {fileID: 4904635714719812008, guid: 0907f5bc57a39d1499ce556be61105d1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4904635714719812008, guid: 0907f5bc57a39d1499ce556be61105d1, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -887,18 +871,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 216733276}
     m_Modifications:
     - target: {fileID: 3476807244369899190, guid: 2b80894d4ed45ff49bfaa2f16d9939a9, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 7.48635
-      objectReference: {fileID: 0}
-    - target: {fileID: 3476807244369899190, guid: 2b80894d4ed45ff49bfaa2f16d9939a9, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 7.48635
-      objectReference: {fileID: 0}
-    - target: {fileID: 3476807244369899190, guid: 2b80894d4ed45ff49bfaa2f16d9939a9, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 7.48635
-      objectReference: {fileID: 0}
-    - target: {fileID: 3476807244369899190, guid: 2b80894d4ed45ff49bfaa2f16d9939a9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.961969
       objectReference: {fileID: 0}
@@ -937,10 +909,6 @@ PrefabInstance:
     - target: {fileID: 3476807244369899190, guid: 2b80894d4ed45ff49bfaa2f16d9939a9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3476807244369899190, guid: 2b80894d4ed45ff49bfaa2f16d9939a9, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4097146409035585383, guid: 2b80894d4ed45ff49bfaa2f16d9939a9, type: 3}
       propertyPath: m_Name
@@ -1014,7 +982,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8634151721471953172, guid: fa6aec56a06d2324b8b6ce4b8b3dd84c, type: 3}
       propertyPath: nextScene
-      value: Level5
+      value: Level7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1366,18 +1334,6 @@ PrefabInstance:
       value: GoldBarsZL
       objectReference: {fileID: 0}
     - target: {fileID: 8718928205169942722, guid: 4c0ccf8ad51d50b428de609ead24df98, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.6917
-      objectReference: {fileID: 0}
-    - target: {fileID: 8718928205169942722, guid: 4c0ccf8ad51d50b428de609ead24df98, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.6917
-      objectReference: {fileID: 0}
-    - target: {fileID: 8718928205169942722, guid: 4c0ccf8ad51d50b428de609ead24df98, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.6917
-      objectReference: {fileID: 0}
-    - target: {fileID: 8718928205169942722, guid: 4c0ccf8ad51d50b428de609ead24df98, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.466193
       objectReference: {fileID: 0}
@@ -1416,10 +1372,6 @@ PrefabInstance:
     - target: {fileID: 8718928205169942722, guid: 4c0ccf8ad51d50b428de609ead24df98, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8718928205169942722, guid: 4c0ccf8ad51d50b428de609ead24df98, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

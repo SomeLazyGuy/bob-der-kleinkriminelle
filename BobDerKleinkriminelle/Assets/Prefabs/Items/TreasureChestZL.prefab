@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8007783973418843823}
   - component: {fileID: 4354614960450370628}
   - component: {fileID: 9120540925544736157}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TreasureChestZL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3506182761675040741}
   - component: {fileID: 430825051681426467}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

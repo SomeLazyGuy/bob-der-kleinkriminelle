@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 159741377158621013}
   - component: {fileID: -7837841107819688199}
   - component: {fileID: 3925371385420084389}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wrench
   m_TagString: Untagged
   m_Icon: {fileID: 2800000, guid: 32b388e9b9c040d4c833c0819c6764d1, type: 3}
@@ -28,8 +28,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2.5920835, y: 2.5920835, z: 2.5920835}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4976857390643191428}
   - {fileID: 3616586088655699850}
@@ -188,7 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4976857390643191428}
   - component: {fileID: 6852904723509144956}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

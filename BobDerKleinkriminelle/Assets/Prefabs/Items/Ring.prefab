@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8929687356677915747}
   - component: {fileID: 6145317218848599268}
   - component: {fileID: 1911431888208034947}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.8417, y: 1.8417, z: 1.8417}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1864347953083353313}
   - {fileID: 3426711978411571844}
@@ -150,7 +150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1864347953083353313}
   - component: {fileID: 8442688682373594856}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

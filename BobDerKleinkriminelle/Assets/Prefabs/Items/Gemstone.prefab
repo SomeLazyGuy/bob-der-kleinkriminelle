@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 817954260260177025}
   - component: {fileID: 8050953475569757664}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8355058986155981617}
   - component: {fileID: 5430030786978737516}
   - component: {fileID: 4018784146674883636}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gemstone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 4569305876391899740}
   - component: {fileID: 6316838442804439257}
   m_Layer: 0
-  m_Name: highlight
+  m_Name: Highlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

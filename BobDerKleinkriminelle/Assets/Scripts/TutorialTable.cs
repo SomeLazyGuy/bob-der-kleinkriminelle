@@ -9,8 +9,8 @@ public class TutorialTable : MonoBehaviour {
 
     private void Start() {
         _tutorialManager = transform.parent.parent.parent.GetComponent<TutorialManager>();
-        _tutorialManager.PerformOnElapsedTime(HighlightCapacities, 1);
-        _tutorialManager.PerformOnElapsedTime(HighlightItems, 4);
+        _tutorialManager.PerformOnElapsedTime(HighlightCapacities, 5);
+        _tutorialManager.PerformOnElapsedTime(HighlightItems, 6);
     }
 
     private int HighlightCapacities() {

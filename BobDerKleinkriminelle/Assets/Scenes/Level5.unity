@@ -983,7 +983,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: fa6aec56a06d2324b8b6ce4b8b3dd84c, type: 3}
 --- !u!1 &1084788913 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 808667871389888180, guid: fa6aec56a06d2324b8b6ce4b8b3dd84c, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2229737589810835883, guid: fa6aec56a06d2324b8b6ce4b8b3dd84c, type: 3}
   m_PrefabInstance: {fileID: 1084788912}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1475820005

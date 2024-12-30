@@ -68,7 +68,10 @@ public class LevelManager : MonoBehaviour {
         
         yield return new WaitForSeconds(waitTime);
 
-        GameObject.FindWithTag("Player").GetComponent<PlayerController>().StartLevelTransition(Vector2.up);
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null) {
+            player.GetComponent<PlayerController>().StartLevelTransition(Vector2.up);
+        }
         
         _nextScene = "";
         _alpha = 1f;

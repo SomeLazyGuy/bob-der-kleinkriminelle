@@ -976,6 +976,10 @@ PrefabInstance:
       propertyPath: nextScene
       value: Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 2229737589810835883, guid: fa6aec56a06d2324b8b6ce4b8b3dd84c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6283837075071851556, guid: fa6aec56a06d2324b8b6ce4b8b3dd84c, type: 3}
       propertyPath: m_Name
       value: Environment2
@@ -989,11 +993,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa6aec56a06d2324b8b6ce4b8b3dd84c, type: 3}
---- !u!1 &1084788913 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 808667871389888180, guid: fa6aec56a06d2324b8b6ce4b8b3dd84c, type: 3}
-  m_PrefabInstance: {fileID: 1084788912}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1475820005
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,7 +1046,7 @@ MonoBehaviour:
   maxWeight: 10
   isGreedy: 0
   targetValue: 0
-  blockingObject: {fileID: 1084788913}
+  blockingObject: {fileID: 0}
 --- !u!1 &1544333008
 GameObject:
   m_ObjectHideFlags: 0

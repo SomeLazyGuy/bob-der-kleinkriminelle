@@ -97,7 +97,7 @@ public class GameController : MonoBehaviour {
         int oldItemValue = itemEntity.GetValue();
 
         int pickupWeight = maxWeight - _currentWeight;
-        int pickupValue = oldItemValue / oldItemWeight * pickupWeight;
+        int pickupValue = (int)((float)oldItemValue / oldItemWeight * pickupWeight);
 
         int remainingWeight = oldItemWeight - pickupWeight;
         int remainingValue = oldItemValue - pickupValue;

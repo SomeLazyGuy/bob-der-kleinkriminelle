@@ -254,7 +254,22 @@ public class TutorialManager : MonoBehaviour{
                 }    
                 break;
             case "Level6":
-                StartCoroutine(AnimateText("TODO", 0.01f)); // TODO
+                switch(contentPage){
+                    case 0:
+                        StartCoroutine(AnimateText(Level_6_Message, 0.02f));
+                        PlayAudioClip(audioClip1);
+                        break;
+                    case 1:
+                        nextButton.interactable = false;
+                        InstantiateTable(tablePrefab);
+                        break;
+                    case 2:
+                        CloseTutorialCanvas();
+                        break;
+                    default:
+                        Debug.LogError($"Unknown content page: {contentPage}");
+                        break;    
+                }            
                 break;
             case "Level7":
                 switch(contentPage){
@@ -460,9 +475,8 @@ public class TutorialManager : MonoBehaviour{
     "\n\nTrage sie in der folgenden Tabelle ein.\n\nTipp für Kleinkriminelle: Notiere dir auf einem Zettel die Wertigkeiten der "+
     "Gegenstände, beor du die Tabelle schließt.";
 
-    String Level_6_Message = "Versuche selber die Tabelle für diese Bank auszufüllen und entscheide, welche Gegenstände " 
+    String Level_6_Message = "Versuche selber, die Tabelle für diese Bank auszufüllen und entscheide, welche Gegenstände " 
     +"dementsprechend geklaut werden müssen. Viel Glück!";
-
     String Level_7_Message_1 = "Hmmm..... denkst du, du kannst hier einen Gegenstand mitnehmen?";
     String Level_7_Message_2 = "Es gibt Situationen, wo wir trotz Algorithmus keine Lösung für unser Rucksackproblem "
     + "finden. Wie es scheint, sind hier alle Gegenstände zu schwer für dich. Geh lieber direkt ins nächste Level ";

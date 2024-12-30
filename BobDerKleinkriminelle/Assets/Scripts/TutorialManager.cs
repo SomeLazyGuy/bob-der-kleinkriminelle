@@ -82,7 +82,7 @@ public class TutorialManager : MonoBehaviour{
                 switch(contentPage){
                     case 0:
                         PlayAudioClip(audioClip1);
-                        StartCoroutine(AnimateText(Level_1_Message_Part1, 0.025f));
+                        StartCoroutine(AnimateText(Level_1_Intro, 0.025f));
                         break;
                     case 1:
                         StopAudioSource();
@@ -433,24 +433,13 @@ public class TutorialManager : MonoBehaviour{
         }
     }
 
-    /*
-    private String Level_1_Message_Part1 = "Bei dem Knapsack- bzw. Rucksackproblem geht es darum, eine Auswahl " + 
-    "von Objekten mit bestimmten Gewichten und Werten in einen Rucksack mit begrenzter Tragfähigkeit zu packen." + 
-    " Ziel ist es, den Gesamtwert der ausgewählten Objekte zu maximieren, ohne das Gewichtslimit zu " + 
-    "überschreiten.\n\nIm 0/1 Knapsack-Problem sind die Objekte nicht teilbar, was bedeutet, dass man jedes " + 
-    "Objekt entweder vollständig in den Rucksack packt oder gar nicht. Du wirst zur Lösung den Greedy-Algorithmus " + 
-    "und die dynamische Programmierung kennenlernen.";
-
-    private String Level_1_Message_Part2 = "Beim Greedy-Algorithmus berechnest du das " + 
-    "Wert-zu-Gewicht-Verhältnis, genau wie das Preis-Leistungs-Verhältnis bei Lebensmitteln. Es wird solange " + 
-    "der Rucksack mit den günstigsten Objekten gefüllt, bis das nächste nicht mehr passt. Dieser Ansatz führt " + 
-    "jedoch nicht immer zur optimalen Lösung, da er nicht alle möglichen Kombinationen berücksichtigt.\n\nDie " + 
-    "dynamische Programmierung ist eine systematischere Methode, die alle möglichen Kombinationen von Objekten " + 
-    "analysiert und die optimalen Lösungen für Teilprobleme speichert. Dieser Ansatz garantiert eine optimale " + 
-    "Lösung, ist jedoch rechenintensiver.\n\nBobs Aufgabe ist es in diesem Level, einen möglichst hohen Wert in " + 
-    "seinen Beutel zu stopfen. Bedenke, dass er nur begrenzt Beute tragen kann, da er noch fliehen muss!";
-    */
-
+    private String Level_1_Intro = "Guten Tag, Bob Junior! Es ist Zeit, dass du deine Kleinkriminalität auf das "
+    + "nächste Level hebst und Banken ausraubst. As you do. Allerdings müssen wir da ein paar Sachen " +
+    "beachten.\n\nSo ein Banküberfall ist quasi wie das Knapsack- oder Rucksackproblem in der Informatik. " +
+    "Du hast verschiedene Objekte, bei denen du den Wert und das Gewicht oder die Größe kennst und einen " +
+    "Rucksack mit einer maximalen Kapazität. Du möchtest den maximalen Wert mitnehmen, ohne die Kapazität des "+
+    "Rucksacks zu überschreiten, sonst wird es schwierig, aus der Bank zu entkommen.\n\nDas ist das Grundprinzip "+
+    "des Rucksackproblems und damit wirst du keine Probleme haben, Banken auszurauben!";
     private String Level_1_Message_Part1 = "Okay, lass uns loslegen! Du möchtest möglichst wertvolle Beute klauen, "+
     "aber in deinen Rucksack passen nur 16 kg. Wie wählst du die Gegenstände aus, mit denen du den höchsten Wert "+
     "erzielen kannst? Du verwendest einen Greedy Ansatz, um teilbare Mengen auszuwählen.";
@@ -463,11 +452,6 @@ public class TutorialManager : MonoBehaviour{
 
     private String Level_1_Message_Part3 = "Okay, bereit? Wähle zuerst die Gegenstände mit dem höchsten Wert pro Gewicht aus";
     
-    /*private String Level_2_Message = "Okay, jetzt sollst du gem. dem Greedy-Algorithmus die Objekte mit der besten " +
-    "Wertigkeit auswählen, bis der Rucksack voll ist. Fange mit dem wertvollsten Objekt an, gefolgt von dem" + 
-    " zweitwertvollsten etc.\n\n" + "In der folgenden Tabelle siehst du die Objekte mit ihren Werten und Gewichten. " +
-    "Die Wertigkeit kannst du einfach berechnen, indem du den Wert durch das Gewicht teilst.";*/
-
     private String Level_4_Message = "Du weißt, was du machen sollst, wenn du Gegenstände nicht voll mitnehmen musst. Oft "+
     "ist es aber nicht möglich, Objekte zu teilen. Das nennt man 0/1-Problem, also entweder nehmen oder nicht nehmen.  " +
     "Daran muss man etwas anders rangehen, um die global beste Lösung zu erzielen. Versuche es aber erstmal selber.";

@@ -130,6 +130,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 402088173}
     m_Modifications:
+    - target: {fileID: -2543456712979045664, guid: 66e1b2c4b34ffcc4f946ac103e17ccae, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3476807244369899190, guid: 66e1b2c4b34ffcc4f946ac103e17ccae, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.51
@@ -173,6 +177,10 @@ PrefabInstance:
     - target: {fileID: 4097146409035585383, guid: 66e1b2c4b34ffcc4f946ac103e17ccae, type: 3}
       propertyPath: m_Name
       value: Cookie
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964336084294438596, guid: 66e1b2c4b34ffcc4f946ac103e17ccae, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1083,9 +1091,9 @@ MonoBehaviour:
   maxWeightText: {fileID: 1786607729}
   tooHeavyText: {fileID: 511502368}
   inventoryFullText: {fileID: 1544333010}
-  maxWeight: 10
+  maxWeight: 16
   isGreedy: 1
-  targetValue: 0
+  targetValue: 28
   blockingObject: {fileID: 1327737906}
 --- !u!1001 &1502048113
 PrefabInstance:

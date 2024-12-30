@@ -1043,7 +1043,7 @@ MonoBehaviour:
   maxWeightText: {fileID: 545552208}
   tooHeavyText: {fileID: 511502368}
   inventoryFullText: {fileID: 1544333010}
-  maxWeight: 10
+  maxWeight: 16
   isGreedy: 0
   targetValue: 0
   blockingObject: {fileID: 0}

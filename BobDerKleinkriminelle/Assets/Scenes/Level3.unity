@@ -178,6 +178,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cookie
       objectReference: {fileID: 0}
+    - target: {fileID: 4097146409035585383, guid: 66e1b2c4b34ffcc4f946ac103e17ccae, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4166791277552585683, guid: 66e1b2c4b34ffcc4f946ac103e17ccae, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7313164115730479143, guid: 66e1b2c4b34ffcc4f946ac103e17ccae, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7964336084294438596, guid: 66e1b2c4b34ffcc4f946ac103e17ccae, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -1342,6 +1354,18 @@ PrefabInstance:
     - target: {fileID: 4321774436145748993, guid: f5071a9e276f4664ea5e449ad5793900, type: 3}
       propertyPath: m_Name
       value: Neclace
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321774436145748993, guid: f5071a9e276f4664ea5e449ad5793900, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946332784617944398, guid: f5071a9e276f4664ea5e449ad5793900, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7328469043998827899, guid: f5071a9e276f4664ea5e449ad5793900, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

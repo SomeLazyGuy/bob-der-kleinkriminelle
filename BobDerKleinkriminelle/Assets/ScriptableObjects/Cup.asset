@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fe7083ddd1c6474abad0a6fcc7716aa, type: 3}
   m_Name: Cup
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: cd99b48c75e46c548bcb352c064c426a, type: 3}
   itemName: Kelch
-  value: 4
-  weight: 4
+  value: 3
+  weight: 1

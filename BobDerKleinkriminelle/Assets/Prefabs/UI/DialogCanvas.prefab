@@ -134,7 +134,12 @@ MonoBehaviour:
   answerButton3: {fileID: 1608030675720595279}
   correctAnswerIndex: 0
   audioSource: {fileID: 2650959191658250305}
-  tutorialAudioClip: {fileID: 0}
+  audioClip1: {fileID: 0}
+  audioClip2: {fileID: 0}
+  audioClip3: {fileID: 0}
+  audioClip4: {fileID: 0}
+  audioClip5: {fileID: 0}
+  audioClip6: {fileID: 0}
   nextButton: {fileID: 1608030675720595279}
   tutorialText: {fileID: 5151498259103314863}
 --- !u!82 &2650959191658250305
@@ -751,7 +756,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0.122641504, g: 0.11049306, b: 0.11049306, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

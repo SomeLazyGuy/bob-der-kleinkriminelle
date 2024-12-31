@@ -974,7 +974,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2167766785683542820, guid: fa6aec56a06d2324b8b6ce4b8b3dd84c, type: 3}
       propertyPath: nextScene
-      value: Menu
+      value: Level8
       objectReference: {fileID: 0}
     - target: {fileID: 2229737589810835883, guid: fa6aec56a06d2324b8b6ce4b8b3dd84c, type: 3}
       propertyPath: m_IsActive
@@ -1047,6 +1047,8 @@ MonoBehaviour:
   isGreedy: 0
   targetValue: 0
   blockingObject: {fileID: 0}
+  audioSource: {fileID: 0}
+  doorSound: {fileID: 0}
 --- !u!1 &1544333008
 GameObject:
   m_ObjectHideFlags: 0

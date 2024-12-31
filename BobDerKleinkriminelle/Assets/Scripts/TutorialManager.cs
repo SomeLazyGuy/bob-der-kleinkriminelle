@@ -14,6 +14,8 @@ using Unity.VisualScripting;
 public class TutorialManager : MonoBehaviour{
     //public GameObject tutorialCanvas;
     //public Button tutorialCloseButton;
+    public static TutorialManager Instance { get; private set; }
+
     [SerializeField] private PlayerController player;
     [SerializeField] private GameObject tutorialCanvas;
     [SerializeField] private GameObject quizPrefab;
@@ -37,7 +39,7 @@ public class TutorialManager : MonoBehaviour{
     [SerializeField] private AudioClip audioClip4;
     [SerializeField] private AudioClip audioClip5;
     [SerializeField] private AudioClip audioClip6; 
-
+    [SerializeField] private AudioClip audioClip7;
     public Button nextButton;
     public TextMeshProUGUI tutorialText;
     private int contentPage;
@@ -58,6 +60,20 @@ public class TutorialManager : MonoBehaviour{
         if(player != null){ player.DisableMovement(); } // nicht ideal, aber passt schon
     }
 
+    private void Awake() {
+
+        if (Instance == null) {
+
+            Instance = this;
+
+        } else {
+
+            Destroy(gameObject);
+
+        }
+
+    }
+
     public void ChallengeFinished(){
         isFinished = true;
         nextButton.interactable = true;
@@ -74,6 +90,11 @@ public class TutorialManager : MonoBehaviour{
         player.EnableMovement();
     }
 
+    private void OpenTutorialCanvas(){
+        tutorialCanvas.SetActive(true);
+        player.DisableMovement();
+    }
+
     private void SetTutorialContent(){
         Scene currentScene = SceneManager.GetActiveScene();
         Debug.Log($"[SetTutorialText] Current Scene is: {currentScene.name}");       
@@ -81,23 +102,32 @@ public class TutorialManager : MonoBehaviour{
             case "Level1":
                 switch(contentPage){
                     case 0:
+                        // Intro
                         PlayAudioClip(audioClip1);
                         StartCoroutine(AnimateText(Level_1_Intro, 0.025f));
                         break;
                     case 1:
+                        // Erklärung Greedy Ansatz
+                        StopAudioSource();
+                        ClearText();
+                        StartCoroutine(AnimateText(Level_1_Message_Part1, 0.025f));
+                        PlayAudioClip(audioClip7);
+                        
+                        break;
+                    case 2:
                         StopAudioSource();
                         ClearText();
                         nextButton.interactable = false;
                         InstantiateTable(tablePrefab);
                         PlayAudioClip(audioClip6);
                         break;
-                    case 2:
+                    case 3:
                         // "Okay, bereit? Wähle zuerst die Gegenstände mit dem höchsten Wert pro Gewicht aus";
                         ClearGameObject(tablePrefab);
                         PlayAudioClip(audioClip2); 
                         StartCoroutine(AnimateText(Level_1_Message_Part3, 0.05f));
                         break;
-                    case 3:
+                    case 4:
                         CloseTutorialCanvas();
                         break;
                     default:
@@ -297,6 +327,32 @@ public class TutorialManager : MonoBehaviour{
                         break;
                 }
                 break;
+            case "Level8":
+                switch(contentPage){
+                    case 0:
+                        nextButton.interactable = false;
+                        quizQuestion = Final_Quiz_Message;
+                        quizAnswer0 = "Greedy";
+                        quizAnswer1 = "Beide gleich";
+                        quizAnswer2 = "Dynamisch";
+                        quizAnswer3 = "Keinen davon";
+                        correctAnswerIndex = 0;
+                        InstantiateQuiz(quizPrefab);
+                        PlayAudioClip(audioClip1);
+                        break;
+                    case 1:
+                        StopAudioSource();
+                        ClearGameObject(quizPrefab);
+                        StartCoroutine(AnimateText(Game_Completed_Message, 0.025f));
+                        PlayAudioClip(audioClip2);
+                        break;
+                    case 2:
+                        CloseTutorialCanvas();
+                        SceneManager.LoadScene("Menu");
+                        break;
+
+                }
+                break;
             default:
                 Debug.LogError($"Unknown scene: {currentScene.name}");
             break;
@@ -414,7 +470,7 @@ public class TutorialManager : MonoBehaviour{
         }
     }
 
-    private void PlayAudioClip(AudioClip audioClip) {
+    public void PlayAudioClip(AudioClip audioClip) {
         if (audioSource != null && audioClip != null) {
             audioSource.clip = audioClip;
             audioSource.Play();
@@ -480,4 +536,9 @@ public class TutorialManager : MonoBehaviour{
     String Level_7_Message_1 = "Hmmm..... denkst du, du kannst hier einen Gegenstand mitnehmen?";
     String Level_7_Message_2 = "Es gibt Situationen, wo wir trotz Algorithmus keine Lösung für unser Rucksackproblem "
     + "finden. Wie es scheint, sind hier alle Gegenstände zu schwer für dich. Geh lieber direkt ins nächste Level ";
+    String Final_Quiz_Message = "Letzte Frage, bevor du deinen Master in Kleinkriminalität erhältst. Du hast nicht "+
+    "viel Zeit deine Auswahl zu treffen, weil die Polizei kommt, du brauchst aber auch kein perfektes Ergebnis und "+
+    "es heißt nehmen oder nicht nehmen. Greedy oder dynamisch?";
+    String Game_Completed_Message = "Herzlichen Glückwunsch, wenn du dir das alles merkst, wirst du der heftigste "+
+    "Kleinkriminelle, der hobbymäßig Banken ausraubt in no time.";
 }

@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
     [SerializeField] private InventoryManager inventoryManager;
@@ -14,6 +16,8 @@ public class GameController : MonoBehaviour {
     [SerializeField] private bool isGreedy;
     [SerializeField] private int targetValue;
     [SerializeField] private GameObject blockingObject;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip doorSound;
     private bool doorLocked = true;
 
     private PlayerController player;
@@ -161,6 +165,7 @@ public class GameController : MonoBehaviour {
         if (_currentValue >= targetValue && doorLocked) {
             doorLocked = false;
             blockingObject.SetActive(false);
+            TutorialManager.Instance.PlayAudioClip(doorSound);
             Debug.Log("Door unlocked");
         }
     }

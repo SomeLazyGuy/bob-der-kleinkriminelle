@@ -3,7 +3,16 @@ guid: 5f9699e03f25d394291e1615f4375af7
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - inventoryManager: {instanceID: 0}
+  - weightText: {instanceID: 0}
+  - valueText: {instanceID: 0}
+  - maxWeightText: {instanceID: 0}
+  - tooHeavyText: {instanceID: 0}
+  - inventoryFullText: {instanceID: 0}
+  - blockingObject: {instanceID: 0}
+  - audioSource: {fileID: -868529739808455450, guid: a16c9237c174bf940a71fd2c708b29b9, type: 3}
+  - doorSound: {fileID: 8300000, guid: 0784be7dd32c4e5489c112f6b2c68563, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

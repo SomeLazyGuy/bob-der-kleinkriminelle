@@ -954,6 +954,72 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &636518922
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3784828652534752058, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476023726080207320, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+      propertyPath: m_Name
+      value: DoorAudioSource
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145111704476363236, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.1558733
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145111704476363236, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.66711
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145111704476363236, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1408611
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145111704476363236, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145111704476363236, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145111704476363236, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145111704476363236, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145111704476363236, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145111704476363236, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145111704476363236, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+--- !u!82 &899636793 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3784828652534752058, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+  m_PrefabInstance: {fileID: 636518922}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &912579114
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,7 +1049,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c1ebfb057118d744294a95ee4c87e21f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1429,8 +1495,9 @@ MonoBehaviour:
   isGreedy: 1
   targetValue: 26
   blockingObject: {fileID: 1312684547}
-  audioSource: {fileID: 0}
-  doorSound: {fileID: 0}
+  audioSource: {fileID: 3784828652534752058, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+  doorSound: {fileID: 8300000, guid: 0784be7dd32c4e5489c112f6b2c68563, type: 3}
+  doorSource: {fileID: 899636793}
 --- !u!1 &1544333008
 GameObject:
   m_ObjectHideFlags: 0
@@ -2005,3 +2072,4 @@ SceneRoots:
   - {fileID: 7766486286359287126}
   - {fileID: 491124498}
   - {fileID: 912579116}
+  - {fileID: 636518922}

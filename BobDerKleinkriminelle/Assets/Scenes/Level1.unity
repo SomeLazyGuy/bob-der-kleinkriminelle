@@ -138,6 +138,11 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!82 &199513042 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3784828652534752058, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+  m_PrefabInstance: {fileID: 1256182575}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &273630219
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,7 +1282,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1082078931}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 421da6659c475ca459e9f78f18add8b1, type: 3}
@@ -1725,6 +1730,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
+--- !u!1001 &1256182575
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3784828652534752058, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476023726080207320, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+      propertyPath: m_Name
+      value: DoorAudioSource
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145111704476363236, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.1558733
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145111704476363236, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.66711
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145111704476363236, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1408611
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145111704476363236, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145111704476363236, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145111704476363236, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145111704476363236, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145111704476363236, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145111704476363236, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145111704476363236, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
 --- !u!1 &1334975018 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1483288919918974513, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
@@ -1784,8 +1850,9 @@ MonoBehaviour:
   isGreedy: 1
   targetValue: 13
   blockingObject: {fileID: 1930428179}
-  audioSource: {fileID: 0}
-  doorSound: {fileID: 0}
+  audioSource: {fileID: 199513042}
+  doorSound: {fileID: 8300000, guid: 0784be7dd32c4e5489c112f6b2c68563, type: 3}
+  doorSource: {fileID: 199513042}
 --- !u!1 &1544333008
 GameObject:
   m_ObjectHideFlags: 0
@@ -3379,3 +3446,4 @@ SceneRoots:
   - {fileID: 7766486286359287126}
   - {fileID: 1231272167}
   - {fileID: 1082078933}
+  - {fileID: 1256182575}

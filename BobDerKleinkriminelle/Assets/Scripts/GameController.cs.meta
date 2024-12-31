@@ -11,7 +11,7 @@ MonoImporter:
   - tooHeavyText: {instanceID: 0}
   - inventoryFullText: {instanceID: 0}
   - blockingObject: {instanceID: 0}
-  - audioSource: {fileID: -868529739808455450, guid: a16c9237c174bf940a71fd2c708b29b9, type: 3}
+  - audioSource: {fileID: 3784828652534752058, guid: b4ee4b4b285a7e84c8eb71ec2e09947f, type: 3}
   - doorSound: {fileID: 8300000, guid: 0784be7dd32c4e5489c112f6b2c68563, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}

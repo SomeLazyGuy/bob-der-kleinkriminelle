@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour {
     [SerializeField] private GameObject blockingObject;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip doorSound;
+    [SerializeField] private AudioSource doorSource;
     private bool doorLocked = true;
 
     private PlayerController player;
@@ -161,12 +162,30 @@ public class GameController : MonoBehaviour {
     }
 
     private void CheckCompleted() {
-        Debug.Log($"CheckCompleted was called. Current: {_currentValue},target: {targetValue}");
+        Debug.Log($"CheckCompleted was called. Current: {_currentValue}, target: {targetValue}");
         if (_currentValue >= targetValue && doorLocked) {
             doorLocked = false;
-            blockingObject.SetActive(false);
-            TutorialManager.Instance.PlayAudioClip(doorSound);
-            Debug.Log("Door unlocked");
+            if(blockingObject != null && blockingObject.activeSelf){
+                PlayDoorSound();
+                blockingObject.SetActive(false);
+                Debug.Log("Door unlocked");
+            } 
+            
+            
         }
+    }
+
+    [ContextMenu("Test Door Sound")]
+    private void PlayDoorSound() {
+        if(audioSource != null){
+            if(doorSource != null){
+                doorSource.PlayOneShot(doorSound);
+            } else {
+                Debug.LogError("DoorSource not set");
+            }
+        } else {
+            Debug.LogError("AudioSource not set");
+        }
+        
     }
 }

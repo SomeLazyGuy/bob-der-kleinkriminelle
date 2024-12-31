@@ -169,9 +169,9 @@ public class GameController : MonoBehaviour {
                 PlayDoorSound();
                 blockingObject.SetActive(false);
                 Debug.Log("Door unlocked");
-            } 
-            
-            
+            } else {
+                Debug.LogError("BlockingObject not set or not active");
+            }  
         }
     }
 

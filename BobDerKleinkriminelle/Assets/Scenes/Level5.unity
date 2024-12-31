@@ -1512,6 +1512,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 8a4f7c20e8bcdc84a98537e2c1ccfee2, type: 3}
     - target: {fileID: 1713452605462670325, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
+      propertyPath: audioClip2
+      value: 
+      objectReference: {fileID: 8300000, guid: 8e84818bc022eee4097bba21c81a0dae, type: 3}
+    - target: {fileID: 1713452605462670325, guid: 916c5d922adbe504095b6a5183ab8f42, type: 3}
       propertyPath: tablePrefab
       value: 
       objectReference: {fileID: 8229472459155523413, guid: cd33406970263484bb0eb397ed4de715, type: 3}

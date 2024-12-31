@@ -274,6 +274,7 @@ public class TutorialManager : MonoBehaviour{
                         nextButton.interactable = false;
                         ClearGameObject(tablePrefab);
                         InstantiateTable(tablePrefab2);
+                        PlayAudioClip(audioClip2);
                     break;
                     case 2:
                         CloseTutorialCanvas();
